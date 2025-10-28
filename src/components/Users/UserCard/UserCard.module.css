@@ -1,0 +1,16 @@
+.userCardCont {
+  display: flex;
+  gap: 16px;
+}
+
+.userDataCont {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.buttonsCont {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}

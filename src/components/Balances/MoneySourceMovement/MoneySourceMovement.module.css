@@ -1,0 +1,46 @@
+.formContainer {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.moneyMovementHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px var(--border-gray) solid;
+  padding-bottom: 8px;
+}
+
+.moneyMovementType {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.INCOME {
+  color: var(--text-green);
+}
+
+.OUTCOME {
+  color: var(--text-red);
+}
+
+.moneyMovementTo {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: normal;
+}
+
+.buttonsCont {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.oneLineCont {
+  display: flex;
+  gap: 8px;
+}

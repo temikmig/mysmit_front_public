@@ -1,0 +1,10 @@
+.comment {
+  color: var(--text-gray);
+  font-style: italic;
+}
+
+.verticalCont {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

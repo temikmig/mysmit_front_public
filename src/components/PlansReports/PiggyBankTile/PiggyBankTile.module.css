@@ -1,0 +1,48 @@
+.piggyBankTileCont {
+  min-width: 300px;
+  height: 148px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--background-white);
+  border-radius: 16px;
+  padding: 16px;
+  border: 2px var(--border-blue) solid;
+}
+
+.balanceTitleCont {
+  display: flex;
+  justify-content: space-between;
+}
+
+.balanceTitle {
+  font-weight: normal;
+  line-height: 32px;
+}
+
+.balancesCont {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.balanceValue {
+  font-size: 20px;
+  line-height: 32px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.plan {
+  color: var(--text-black);
+}
+
+.plan {
+  color: var(--text-gray);
+}
+
+.diff {
+  text-align: right;
+  color: var(--text-gray);
+}

@@ -1,0 +1,32 @@
+.tagCont {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tagCont {
+  display: inline-flex;
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--text-white);
+  cursor: default;
+  transition: 0.2s;
+}
+
+.tagCont.min {
+  padding: 2px 4px;
+}
+
+.tagCont:hover {
+  opacity: 0.8;
+}
+
+.tagCont.min svg {
+  width: 16px;
+  height: 16px;
+}
+
+.tagCont.fullwidth {
+  width: 100%;
+}

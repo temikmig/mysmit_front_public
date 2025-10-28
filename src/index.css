@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+html {
+  font-size: 12px;
+  height: 100%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  line-height: 140%;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--background-body);
+  color: var(--text-black);
+}
+
+#root {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  grid-template-rows: 72px 1fr;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main";
+  width: 100vw;
+  height: 100vh;
+}
+
+:root {
+  --background-body: #0f4c81;
+  --background-layout: #f1f5f8;
+
+  --background-white: #ffffff;
+  --background-gray: #a9b0b7;
+  --background-whitegray: #e5ebf1;
+  --background-blackgray: #686b6c;
+  --background-gray60: #b8bdc499;
+
+  --background-black: #363839;
+  --background-black90: #363839e6;
+  --background-black60: #36383999;
+  --background-black30: #3638394d;
+
+  --background-blue: #0f4c81;
+  --background-blue90: #0f4c81e6;
+  --background-blue60: #0f4c8199;
+  --background-blue30: #0f4c814d;
+
+  --background-red: #f56767;
+  --background-red90: #f56767e6;
+  --background-red60: #f5676799;
+  --background-red30: #f567674d;
+
+  --background-green: #3bab71;
+  --background-green90: #3bab71e6;
+  --background-green60: #3bab7199;
+  --background-green30: #3bab714d;
+
+  --background-orange: #e39d6e;
+  --background-orange90: #e39d6ee6;
+  --background-orange60: #e39d6e99;
+  --background-orange30: #e39d6e4d;
+
+  --background-blue10: #e8edf3;
+
+  --background-shadow-blue: #0a4273;
+
+  --text-black: #363839;
+  --text-black60: #36383999;
+  --text-white: #ffffff;
+  --text-white60: #ffffff99;
+  --text-blackgray: #686b6c;
+  --text-gray: #a9b0b7;
+  --text-red: #f56767;
+  --text-green: #41a444;
+  --text-blue: #0f4c81;
+  --text-orange: #c55611;
+
+  --icons-black: #363839;
+  --icons-white: #ffffff;
+  --icons-blackgray: #686b6c;
+  --icons-gray: #a9b0b7;
+  --icons-red: #b02b2b;
+  --icons-blue: #0f4c81;
+  --icons-green: #428c45;
+  --icons-orange: #c55611;
+
+  --button-primary: #4e7ea8;
+  --button-primary-hover: #6091bb;
+  --button-primary-disabled: #b2c6d9;
+  --button-secondary: #6c757d;
+  --button-secondary-hover: #5a6268;
+  --button-secondary-disabled: #b8bdc4;
+  --button-outline-hover: #dee2e5;
+  --button-outline-disabled: #d9e1e9;
+
+  --table-header: #e5ebf1;
+  --table-header-hover: #cdd7e2;
+  --table-header-active: #b4beca;
+
+  --border-black: #363839;
+  --border-gray: #b8bdc4;
+  --border-gray60: #b8bdc499;
+  --border-whitegray: #e5ebf1;
+  --border-blackgray: #686b6c;
+  --border-red: #b02b2b;
+  --border-blue: #0f4c81;
+  --border-green: #428c45;
+
+  --global-employee-role-admin: #b663c5;
+  --global-employee-role-manager: #caa71a;
+  --global-employee-role-senior-worker: #1a4e8e;
+  --global-employee-role-worker: #0095ff;
+
+  --global-product-type-material: #81155f;
+  --global-product-type-consumable: #0c9184;
+  --global-product-type-tool: #103f8b;
+  --global-product-type-equipment: #c63f3f;
+  --global-product-type-chemical: #616538;
+  --global-product-type-business-cost: #daad09;
+
+  --global-stockmovements-type-in: var(--background-green);
+  --global-stockmovements-type-out: var(--background-red);
+
+  --global-status-draft: #cccccc;
+  --global-status-awaiting: #daad09;
+  --global-status-approved: #428c45;
+  --global-status-rejected: #f56767;
+  --global-status-cancelled: #f56767;
+  --global-status-invalid: #cccccc;
+
+  --global-client-loyalty-card-bronze: #cd7f32;
+  --global-client-loyalty-card-silver: #c0c0c0;
+  --global-client-loyalty-card-gold: #ffd700;
+  --global-client-loyalty-card-platinum: #e5e4e2;
+  --global-client-loyalty-card-brilliant: #b9f2ff;
+
+  --global-product-status-active: #428c45;
+  --global-product-status-hidden: #cccccc;
+
+  --global-planreport-status-active: #daad09;
+  --global-planreport-status-closed: #428c45;
+  --global-planreport-status-undknown: #cccccc;
+}
+
+p {
+  color: var(--text-black);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 50px;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 45px;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 34px;
+}
+
+h4,
+.text_biggest_bold {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+h5 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 25px;
+}
+
+.text_big_bold {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.text_big {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.text_medium_bold {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.text_medium {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.text_small_bold {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.text_small {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.shadow-container {
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+.nowrap-container {
+  white-space: nowrap;
+}
+
+.no-overflow {
+  overflow: unset !important;
+}
+
+.snackbar-container {
+  position: absolute;
+  right: 5px;
+  bottom: 21px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  max-height: calc(100vh - 26px);
+  box-sizing: border-box;
+  padding: 20px 16px 20px 40px;
+  z-index: 10000;
+}
+
+.snackbar-container:empty {
+  display: none;
+}

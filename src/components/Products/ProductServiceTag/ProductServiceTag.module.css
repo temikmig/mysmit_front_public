@@ -1,0 +1,22 @@
+.serviceTagsCont {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.serviceTagCont {
+  display: inline-flex;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--text-white);
+  cursor: default;
+  transition: 0.2s;
+}
+
+.serviceTagCont.min {
+  padding: 2px 4px;
+}
+
+.serviceTagCont:hover {
+  opacity: 0.8;
+}

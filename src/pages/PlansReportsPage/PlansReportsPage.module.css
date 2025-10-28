@@ -1,0 +1,38 @@
+.plansReportsCont {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.monthCont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.monthInfoCont {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.monthOptions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.emptyData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-white);
+  gap: 16px;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.emptyData p {
+  color: var(--text-gray);
+}

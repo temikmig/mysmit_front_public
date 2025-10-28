@@ -1,0 +1,188 @@
+.movementInCont {
+  display: flex;
+  gap: 16px;
+}
+
+.purchaseInvoiceCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  width: 400px;
+  background: var(--background-white);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.purchaseInvoiceProductsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;
+  gap: 8px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.purchaseInvoiceButtonsCont {
+  border-top: 1px var(--border-gray) dashed;
+  padding-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.purchaceInfo {
+  border-bottom: 1px var(--border-gray) solid;
+  padding: 0px 0px 8px 0px;
+}
+
+.purchasePrice {
+  border-top: 1px var(--border-gray) solid;
+  padding: 8px 0px 0px 0px;
+}
+
+.formCont {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.supplierCont {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-bottom: 1px var(--border-gray) solid;
+  padding: 0px 0px 8px 0px;
+}
+
+.formWrap {
+  display: flex;
+  gap: 8px;
+}
+
+.form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.centerButtonCont {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonsCont {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.oneLineCont {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.oneLineCont.bottom {
+  align-items: flex-end;
+}
+
+.addProductCont {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tablePrint {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tablePrint td,
+.tablePrint th {
+  text-align: left;
+  border-left: 1px var(--border-gray) solid;
+  border-right: 1px var(--border-gray) solid;
+  border-bottom: 1px var(--border-gray) solid;
+  padding: 4px;
+  background-color: var(--background-white);
+}
+
+.tablePrint th {
+  position: sticky;
+  top: 0px;
+  background-color: var(--background-whitegray);
+}
+
+.tablePrint td.total {
+  position: sticky;
+  bottom: 0px;
+  background-color: var(--background-whitegray);
+}
+
+.tablePrint td.noBorder,
+.tablePrint th.noBorder {
+  border: none;
+  background: var(--background-white);
+}
+
+.tablePrint tr:last-child td {
+  border-bottom: none;
+}
+
+.tablePrint td.right,
+.tablePrint th.right {
+  text-align: right;
+}
+
+.tablePrint td svg {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  color: var(--icons-black);
+  transition: 0.2s;
+}
+
+.tablePrint td svg:hover {
+  color: var(--icons-gray);
+}
+
+.tablePrint td svg:active {
+  transform: scale(0.95);
+}
+
+.selectTypes {
+  width: 200px;
+}
+
+.selectUnits {
+  width: 100px;
+}
+
+.productButton {
+  border: none;
+  background: none;
+  width: 32px;
+  height: 32px;
+  transition: 0.2s;
+}
+
+.productButton:active {
+  transform: scale(0.95);
+}
+
+.productButton svg {
+  color: var(--icons-blue);
+}
+
+.productServicesCont {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.loaderCont {
+  padding: 16px;
+}

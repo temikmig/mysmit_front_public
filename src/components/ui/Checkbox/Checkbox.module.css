@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.input {
+  display: none;
+}
+
+.box {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--border-gray);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  background: var(--background-white);
+}
+
+.small {
+  width: 16px;
+  height: 16px;
+}
+
+.medium {
+  width: 20px;
+  height: 20px;
+}
+
+.big {
+  width: 32px;
+  height: 32px;
+}
+
+.icon {
+  opacity: 0;
+  color: var(--icons-white);
+  width: 10px;
+  height: 10px;
+}
+
+.big .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.input:checked + .box {
+  background: var(--button-primary);
+  border-color: var(--button-primary) !important;
+}
+
+.input:hover + .box {
+  border-color: var(--border-blackgray);
+}
+
+.input:checked + .box .icon {
+  opacity: 1;
+}
+
+.label {
+  color: var(--text-black);
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.disabled .box {
+  border: 1px solid var(--border-gray) !important;
+}
+
+.error {
+  border-color: var(--border-red) !important;
+}
+
+.errorMessage {
+  color: var(--text-red);
+}

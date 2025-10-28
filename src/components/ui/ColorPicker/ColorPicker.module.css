@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.colorsGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin: 4px 0px 0px 0px;
+}
+
+.colorItem {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: 0.2s;
+  color: var(--text-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colorItem svg {
+  width: 16px;
+  height: 16px;
+}
+
+.label {
+  color: var(--text-black);
+}
+
+.colorItem:hover {
+  opacity: 0.8;
+}
+
+.active {
+  border-color: var(--border-white);
+}

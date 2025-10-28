@@ -1,0 +1,20 @@
+.piggyBanksInfoCont {
+  background: var(--background-white);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.piggyBanksInfoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.piggyBanksCont {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}

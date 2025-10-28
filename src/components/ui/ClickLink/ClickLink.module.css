@@ -1,0 +1,10 @@
+.clickLinkStyle {
+  color: var(--text-blue);
+  cursor: pointer;
+  width: fit-content;
+  display: inline;
+}
+
+.clickLinkStyle:hover {
+  text-decoration: underline;
+}

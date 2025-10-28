@@ -1,0 +1,67 @@
+.fundTileCont {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--background-white);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.fundHead {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--background-blue);
+  padding: 16px;
+}
+
+.fundTitleCont {
+  display: flex;
+  gap: 8px;
+}
+
+.fundTitle {
+  flex: 1;
+  font-weight: normal;
+  line-height: 32px;
+  color: var(--text-white);
+  border-radius: 8px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: move;
+}
+
+.fundTitle:hover {
+  background: linear-gradient(90deg, transparent, #ffffff17);
+}
+
+.fundTileContent {
+  font-size: 24px;
+  line-height: 34px;
+  color: var(--text-white);
+}
+
+.fundBalanceValue {
+  font-size: 48px;
+  line-height: 60px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.subFundsCont:empty {
+  display: none;
+}
+
+.subFundsCont {
+  padding: 0px 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.emptyData {
+  text-align: center;
+  color: var(--text-gray);
+}

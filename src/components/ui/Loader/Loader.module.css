@@ -1,0 +1,76 @@
+.loaderScreen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+.loaderText {
+  color: var(--background-layout);
+}
+
+.dotLoader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dotLoader span {
+  width: 16px;
+  height: 16px;
+  background: var(--background-layout);
+  border-radius: 50%;
+  animation: bounce 0.75s infinite alternate;
+}
+
+.dotLoader span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.dotLoader span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.dotLoader span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.dotLoader span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.dotLoader span:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.dotLoader span:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.dotLoader span:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.dotLoader span:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.dotLoader span:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+@keyframes bounce {
+  to {
+    transform: translateY(-24px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

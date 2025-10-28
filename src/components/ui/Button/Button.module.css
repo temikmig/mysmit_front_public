@@ -1,0 +1,99 @@
+.button {
+  padding: 0px 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.button:active:disabled {
+  transform: scale(1);
+}
+
+.primary {
+  background-color: var(--button-primary);
+  color: var(--text-white);
+}
+
+.primary:hover {
+  background-color: var(--button-primary-hover);
+}
+
+.primary:disabled {
+  background-color: var(--button-primary-disabled);
+  color: var(--text-white60);
+}
+
+.secondary {
+  background-color: var(--button-secondary);
+  color: var(--text-white);
+}
+
+.secondary:hover {
+  background-color: var(--button-secondary-hover);
+}
+
+.secondary:disabled {
+  background-color: var(--button-secondary-disabled);
+  color: var(--text-white60);
+}
+
+.outline {
+  background: none;
+  color: var(--text-black);
+}
+
+.outline:hover {
+  background-color: var(--button-outline-hover);
+}
+
+.outline:disabled {
+  background-color: var(--button-outline-disabled);
+  color: var(--text-black60);
+}
+
+.small {
+  height: 28px;
+  font-size: 12px;
+}
+
+.medium {
+  height: 32px;
+  font-size: 14px;
+}
+
+.big {
+  height: 40px;
+  font-size: 16px;
+}
+
+.icon {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.big .icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.small .icon svg {
+  width: 14px;
+  height: 14px;
+}

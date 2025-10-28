@@ -1,0 +1,72 @@
+.toggleCont {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: 9999px;
+  background-color: var(--background-gray);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease;
+}
+
+.thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--background-white);
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.checked {
+  background-color: var(--background-blue);
+}
+
+.checked .thumb {
+  transform: translateX(20px);
+}
+
+.toggleCont.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.toggleCont.disabled .toggle {
+  background-color: var(--background-gray);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.toggleCont.disabled .thumb {
+  background-color: var(--background-whitegray);
+}
+
+.label {
+  user-select: none;
+}
+
+.toggleCont.small .toggle {
+  width: 36px;
+  height: 20px;
+}
+
+.toggleCont.small .toggle.checked .thumb {
+  transform: translateX(16px);
+}
+
+.toggleCont.small .thumb {
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+}

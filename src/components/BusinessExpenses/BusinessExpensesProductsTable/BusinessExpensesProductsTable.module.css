@@ -1,0 +1,19 @@
+.expensesHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.expensesBalanceCont {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.expensesBalance {
+  width: 50%;
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+}

@@ -1,0 +1,11 @@
+.ACTIVE {
+  background: var(--global-planreport-status-active);
+}
+
+.CLOSED {
+  background: var(--global-planreport-status-closed);
+}
+
+.UNKNOWN {
+  background: var(--global-planreport-status-undknown);
+}

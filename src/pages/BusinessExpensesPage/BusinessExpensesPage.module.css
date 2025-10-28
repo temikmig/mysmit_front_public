@@ -1,0 +1,10 @@
+.businessExpensesCont {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.totalCont {
+  display: flex;
+  gap: 16px;
+}

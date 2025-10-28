@@ -1,0 +1,27 @@
+.inventoryCardCont {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inventoryCardProductsCont {
+  max-height: 400px;
+}
+
+.inventoryStatusCont {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inventoryStatusCont p {
+  color: var(--text-gray);
+  font-style: italic;
+}
+
+.buttonsCont {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}

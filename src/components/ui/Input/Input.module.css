@@ -1,0 +1,110 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  flex: 1;
+}
+
+.label {
+  color: var(--text-black);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.labelDisabled {
+  color: var(--text-gray);
+}
+
+.labelError {
+  color: var(--text-red);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  width: 100%;
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+  background: var(--background-white);
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.wrapper:hover {
+  border: 1px solid var(--border-blackgray);
+}
+
+.wrapper:focus-within {
+  border-color: var(--border-blue);
+}
+
+.input {
+  flex: 1;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 0px 8px;
+  height: 100%;
+  background: transparent;
+  color: var(--text-black);
+}
+
+.input::placeholder {
+  color: var(--text-gray);
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--icons-gray);
+  margin-right: 8px;
+  transition: color 0.2s ease;
+  width: 16px;
+  height: 16px;
+}
+
+.iconButton:hover {
+  color: var(--icons-blue);
+}
+
+.icon.left {
+  margin-left: 8px;
+}
+
+.icon.right {
+  margin-right: 8px;
+}
+
+.icon,
+.icon svg {
+  width: 16px;
+  height: 16px;
+  color: var(--icons-gray);
+}
+
+.error {
+  border-color: var(--border-red);
+}
+
+.errorMessage {
+  color: var(--text-red);
+  margin-top: 2px;
+}
+
+.helperText {
+  color: var(--text-gray);
+  margin-top: 2px;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}

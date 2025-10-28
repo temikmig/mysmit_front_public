@@ -1,0 +1,24 @@
+.container {
+  height: 100vh;
+  padding: 5px 5px 5px 0px;
+  display: flex;
+}
+
+.layoutBox {
+  background: var(--background-layout);
+  box-shadow: inset 0px 0px 10px 0px var(--background-shadow-blue);
+  border-radius: 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  margin: 6px;
+  padding: 10px;
+}

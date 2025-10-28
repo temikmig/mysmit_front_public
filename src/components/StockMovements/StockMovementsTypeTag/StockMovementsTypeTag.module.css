@@ -1,0 +1,7 @@
+.IN {
+  background: var(--global-stockmovements-type-in);
+}
+
+.OUT {
+  background: var(--global-stockmovements-type-out);
+}

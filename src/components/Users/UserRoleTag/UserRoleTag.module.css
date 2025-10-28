@@ -1,0 +1,15 @@
+.ADMIN {
+  background: var(--global-employee-role-admin);
+}
+
+.MANAGER {
+  background: var(--global-employee-role-manager);
+}
+
+.SENIOR_WORKER {
+  background: var(--global-employee-role-senior-worker);
+}
+
+.WORKER {
+  background: var(--global-employee-role-worker);
+}

@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.barContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.barItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--background-white);
+  border: 1px var(--border-gray) solid;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.barPercent {
+  width: 20%;
+  color: var(--text-gray);
+  font-weight: bold;
+}
+
+.slider {
+  width: 150px !important;
+}
+
+.barName {
+  white-space: nowrap;
+  width: 40%;
+}
+
+.barWrapper {
+  flex: 1;
+}
+
+.barControl {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.checked {
+  background: var(--button-primary);
+}
+
+.checked:hover {
+  background: var(--button-primary-hover);
+}
+
+.checked svg {
+  color: var(--background-white);
+}

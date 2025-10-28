@@ -1,0 +1,41 @@
+.overlayCont {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: 0.25s;
+}
+
+.dropdownWrapper {
+  max-height: 300px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  border-radius: 8px;
+}
+
+.dropdownWrapper.modalWrapper {
+  max-height: initial;
+}
+
+.dropdownWrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdownWrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dropdownWrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.dropdownWrapper::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}

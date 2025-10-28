@@ -1,0 +1,31 @@
+.clientCarAddCont {
+  width: 400px;
+}
+
+.formCont {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formWrap {
+  display: flex;
+  gap: 8px;
+}
+
+.form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.buttonsCont {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.oneLineCont {
+  display: flex;
+  gap: 8px;
+}

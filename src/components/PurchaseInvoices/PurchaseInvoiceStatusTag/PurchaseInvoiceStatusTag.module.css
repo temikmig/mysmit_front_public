@@ -1,0 +1,11 @@
+.APPROVED {
+  background: var(--global-status-approved);
+}
+
+.CANCELLED {
+  background: var(--global-status-cancelled);
+}
+
+.INVALID {
+  background: var(--global-status-invalid);
+}

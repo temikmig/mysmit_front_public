@@ -1,0 +1,44 @@
+.fundsTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--background-white);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.fundsTable th {
+  background: var(--background-gray) !important;
+  padding: 8px;
+  text-align: left;
+  color: var(--text-white);
+}
+
+.fundsTable td {
+  border-bottom: 1px var(--border-gray) solid;
+}
+
+.fundsTable tr:last-child td {
+  border-bottom: none;
+}
+
+.fundsTable td.fundsTableValue {
+  width: 100px;
+  padding: 4px;
+  text-align: right;
+}
+
+.fundsTable td.fundsTableLabel {
+  padding: 4px 4px 4px 8px;
+}
+
+.totalLabel td {
+  font-weight: bold;
+  background: var(--background-whitegray);
+}
+
+.fundsTable td.fundsTablePercent {
+  text-align: right;
+  color: var(--text-gray);
+  font-weight: bold;
+  padding: 4px 8px 4px 4px;
+}

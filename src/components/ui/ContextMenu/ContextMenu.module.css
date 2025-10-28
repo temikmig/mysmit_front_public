@@ -1,0 +1,50 @@
+.contextMenuCont {
+  background: var(--background-white);
+  border-radius: 8px;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2);
+}
+
+.contextMenuItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.contextMenuItem:first-child {
+  border-radius: 8px 8px 0px 0px;
+}
+
+.contextMenuItem:last-child {
+  border-radius: 0px 0px 8px 8px;
+}
+
+.contextMenuItem.blue {
+  color: var(--icons-blue);
+}
+
+.contextMenuItem.red {
+  color: var(--icons-red);
+}
+
+.contextMenuItem.green {
+  color: var(--icons-green);
+}
+
+.contextMenuItem.orange {
+  color: var(--icons-orange);
+}
+
+.contextMenuItem:hover {
+  background: var(--background-blue10);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+}

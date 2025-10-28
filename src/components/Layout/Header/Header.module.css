@@ -1,0 +1,39 @@
+.header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 0px;
+  font-weight: bold;
+}
+
+.profileCont {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.titleCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.titleCont h3 {
+  height: 34px;
+}
+
+.backAngleCont {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: 0.25s;
+  position: relative;
+  transition: 0.3s;
+}
+
+.backAngleCont:hover svg {
+  position: relative;
+  right: 5px;
+}

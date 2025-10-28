@@ -1,0 +1,34 @@
+.tableActionsCont {
+  display: flex;
+  gap: 16px;
+}
+
+.tableActionsCont button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tableActionsCont button:hover {
+  background: var(--background-blue10);
+}
+
+.tableActionsCont button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.tableActionsCont button:active {
+  transform: scale(0.95);
+}
+
+.tableActionsCont button svg {
+  color: var(--icons-blue);
+}

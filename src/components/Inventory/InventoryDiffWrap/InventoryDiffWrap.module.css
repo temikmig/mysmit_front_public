@@ -1,0 +1,16 @@
+.diff {
+  line-height: 16px !important;
+  white-space: nowrap;
+}
+
+.diffOk {
+  color: var(--text-blue);
+}
+
+.diffOver {
+  color: var(--text-green);
+}
+
+.diffUnder {
+  color: var(--text-red);
+}

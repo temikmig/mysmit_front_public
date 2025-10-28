@@ -1,0 +1,23 @@
+.writeOffCont {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.buttonsCont {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.oneLineCont {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.oneLineCont p.unit {
+  display: flex;
+  align-items: center;
+  height: 32px;
+}

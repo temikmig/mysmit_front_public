@@ -1,0 +1,33 @@
+.subFundItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subFundCont {
+  background: var(--background-white);
+  border: 1px var(--border-gray60) solid;
+  border-radius: 8px;
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.subfundTitle {
+  color: var(--text-black60);
+  padding: 8px;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subfundDesc {
+  padding: 0px 8px;
+  background: var(--background-whitegray);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100px;
+  white-space: nowrap;
+}

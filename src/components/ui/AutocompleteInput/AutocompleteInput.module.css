@@ -1,0 +1,170 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.label {
+  color: var(--text-black);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+}
+
+.labelError {
+  color: var(--text-red);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  width: 100%;
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+  background: var(--background-white);
+  padding: 0 8px;
+  cursor: pointer;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wrapper:hover {
+  border-color: var(--border-blackgray);
+}
+
+.wrapper:focus-within {
+  border-color: var(--border-blue);
+}
+
+.value {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-black);
+  font-size: 14px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.left {
+  margin-right: 4px;
+}
+
+.iconRight {
+  color: var(--icons-gray);
+  transition: 0.2s;
+}
+
+.iconRight.open {
+  transform: rotate(180deg);
+}
+
+.selectCont {
+  background: var(--background-white);
+  border-radius: 8px;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2);
+}
+
+.selectItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+  border-bottom: 1px var(--border-whitegray) solid;
+}
+
+.selectItem:last-child {
+  border-bottom: none;
+}
+
+.selectItem:hover {
+  background: var(--background-blue10);
+}
+
+.emptyItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: default;
+}
+
+.blue {
+  color: var(--icons-blue);
+}
+
+.red {
+  color: var(--icons-red);
+}
+
+.checkIcon {
+  margin-left: auto;
+  color: var(--icons-blue);
+}
+
+.checkIcon {
+  width: 12px;
+  height: 12px;
+}
+
+.error {
+  border-color: var(--border-red);
+}
+
+.errorMessage {
+  margin-top: 2px;
+  color: var(--text-red);
+}
+
+.helperText {
+  margin-top: 2px;
+  color: var(--text-gray);
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.clearIcon {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.clearIcon:active {
+  transform: scale(0.9);
+}
+
+.selectedTagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.selectedTagItem {
+  background: var(--background-white);
+  border: 1px var(--border-gray) solid;
+  padding: 0px 8px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

@@ -1,0 +1,22 @@
+.cardOptions {
+  position: absolute;
+  top: -20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-white);
+  border: 0px;
+  box-shadow: 0px 2px 4px #c7c7c7;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+  color: var(--icons-black);
+}
+
+.cardOptions:hover {
+  background: var(--background-blue10);
+  box-shadow: 0px 2px 4px var(--background-shadow-blue);
+  border-radius: 50%;
+}

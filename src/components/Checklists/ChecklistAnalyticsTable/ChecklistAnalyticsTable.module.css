@@ -1,0 +1,39 @@
+.fundsTable {
+  background: #fff;
+  border-radius: 8px;
+}
+
+.fundsTable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.fundsTable td.fundsTableInput {
+  width: 120px;
+  padding: 4px;
+}
+
+.fundsTable td.fundsTableLabel {
+  padding: 4px 4px 4px 8px;
+}
+
+.fundsTable td.fundsTableLabel.right {
+  text-align: right;
+}
+
+.fundsTable td.fundsTablePercent {
+  text-align: right;
+  color: var(--text-gray);
+  font-weight: bold;
+  padding: 4px 8px 4px 4px;
+}
+
+.moreVal input {
+  color: var(--text-green);
+  font-weight: bold;
+}
+
+.errorVal input {
+  color: var(--text-red);
+  font-weight: bold;
+}

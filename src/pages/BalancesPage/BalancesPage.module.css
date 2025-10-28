@@ -1,0 +1,36 @@
+.balancesPageCont {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.balancesCont {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.fundsInfoCont {
+  background: var(--background-white);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.fundsInfoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fundsCont {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.emptyData {
+  color: var(--text-gray);
+}

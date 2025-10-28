@@ -1,0 +1,17 @@
+.sidebar {
+  grid-area: sidebar;
+  background: var(--background-blue);
+  color: #fff;
+  border-radius: 0px 32px 32px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar svg {
+  fill: var(--background-white);
+}
+
+.logoCont {
+  padding: 32px 32px 15px 16px;
+  border-bottom: 1px #ffffff33 solid;
+}

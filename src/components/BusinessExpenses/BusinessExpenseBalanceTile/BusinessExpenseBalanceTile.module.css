@@ -1,0 +1,46 @@
+.balanceTileCont {
+  height: 40px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 16px;
+  background: var(--background-white);
+  border-radius: 16px;
+  padding: 6px 16px;
+  border-left: 16px transparent solid;
+}
+
+.blue {
+  border-color: var(--border-blue);
+}
+
+.green {
+  border-color: var(--border-green);
+}
+
+.red {
+  border-color: var(--border-red);
+}
+
+.balanceTitleCont {
+  display: flex;
+  justify-content: space-between;
+}
+
+.balanceTitle {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--text-gray);
+  width: 80%;
+  white-space: nowrap;
+}
+
+.balanceValue {
+  font-size: 18px;
+  line-height: 28px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  flex: 1;
+}

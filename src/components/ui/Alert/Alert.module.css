@@ -1,0 +1,29 @@
+.alertCont {
+  width: 100%;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 8px;
+}
+
+.alertCont svg {
+  width: 32px;
+  height: 32px;
+}
+
+.alertWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.alertCont.success {
+  background: var(--background-green60);
+}
+.alertCont.error {
+  background: var(--background-red60);
+}
+.alertCont.attention {
+  background: var(--background-orange60);
+}

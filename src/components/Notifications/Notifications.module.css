@@ -1,0 +1,40 @@
+.notificationsCont {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+  color: var(--icons-black);
+  border: none;
+}
+
+.notificationsCont:hover {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.noticeFlag {
+  width: 10px;
+  height: 10px;
+  background: var(--background-red);
+  border: 2px var(--background-white) solid;
+  border-radius: 50%;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.notificationsContainer {
+  background: var(--background-white);
+  width: 300px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-gray);
+  gap: 16px;
+}

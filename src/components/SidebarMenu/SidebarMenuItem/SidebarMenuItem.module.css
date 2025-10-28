@@ -1,0 +1,62 @@
+.sidebarMenuLi {
+  list-style: none;
+}
+
+.sidebarMenuItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  transition: 0.25s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sidebarMenuTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.arrowIcon {
+  transition: 0.2s;
+}
+
+.arrowIcon.open {
+  transform: rotate(180deg);
+}
+
+.sidebarMenuItem.dev {
+  opacity: 0.5;
+}
+
+.sidebarMenuItem:hover {
+  display: flex;
+  padding: 8px 16px 8px 24px;
+  background: #ffffff11;
+}
+
+.sidebarMenuItem svg {
+  width: 16px;
+  height: 16px;
+}
+
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.submenu.open {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.submenu .sidebarMenuItem {
+  padding: 8px 8px 8px 40px;
+}
+
+.submenu .sidebarMenuItem:hover {
+  padding: 8px 8px 8px 48px;
+}

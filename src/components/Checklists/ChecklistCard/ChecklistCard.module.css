@@ -1,0 +1,118 @@
+.checklistCardCont {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checklistCont {
+  width: 1000px;
+  display: flex;
+  gap: 8px;
+}
+
+.checklistDataCont {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.buttonsCont {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.checklistTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.productsCont {
+  background: var(--background-white);
+  border-radius: 8px;
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.productItem td {
+  padding: 4px 8px;
+  border: 1px var(--border-gray) solid;
+}
+
+.productItem:last-child td {
+  border-bottom: none;
+}
+
+.productItem td:first-child {
+  border-left: none;
+}
+
+.productItem td:last-child {
+  border-right: none;
+}
+
+.checklistTable th {
+  background: var(--background-gray);
+  color: var(--text-white) !important;
+  box-shadow: inset 0px 0px 1px 0px var(--border-gray);
+  padding: 4px 8px;
+  position: sticky;
+  top: 0px;
+  border-bottom: 1px var(--border-gray) solid;
+  text-align: left;
+  height: 28px;
+  font-size: 14px;
+}
+
+.productGroupName {
+  background: var(--background-whitegray);
+  box-shadow: inset 0px 0px 1px 0px var(--border-gray);
+  border-bottom: 1px var(--border-gray) solid;
+  padding: 0px 8px;
+  height: 20px;
+  position: sticky;
+  top: 27px;
+}
+
+.productQty {
+  width: 80px;
+  text-align: right;
+}
+
+.productNameCont {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.productCheckIcon {
+  width: 16px;
+  height: 16px;
+  background: var(--button-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.productCheckIcon svg {
+  width: 8px;
+  height: 8px;
+  color: #fff;
+}
+
+.checklistEmployeesCont {
+  width: 100%;
+}
+
+.checklistEmployeeItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.checklistEmployeeItem p {
+  color: var(--text-gray);
+}

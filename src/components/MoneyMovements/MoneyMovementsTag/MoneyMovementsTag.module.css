@@ -1,0 +1,7 @@
+.in {
+  background: var(--background-green);
+}
+
+.out {
+  background: var(--background-red);
+}

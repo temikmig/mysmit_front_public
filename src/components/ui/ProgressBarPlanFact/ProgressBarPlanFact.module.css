@@ -1,0 +1,31 @@
+.progressBarCont {
+  position: relative;
+  width: 100%;
+  height: 16px;
+  background: var(--background-gray);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.planBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: var(--background-blue60);
+  z-index: 1;
+}
+
+.factBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--background-red);
+  z-index: 2;
+}
+
+.complete {
+  background: var(--background-green);
+}

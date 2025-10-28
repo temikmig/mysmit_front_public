@@ -1,0 +1,42 @@
+.loginPage {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  min-width: 400px;
+}
+
+.logoCont p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.loginCont {
+  border-radius: 32px;
+  background: var(--background-layout);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: inset 0px 0px 10px 0px var(--background-shadow-blue);
+}
+
+.formCont {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.buttonsCont {
+  display: flex;
+  justify-content: flex-end;
+}

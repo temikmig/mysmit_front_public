@@ -1,0 +1,172 @@
+.tableContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0;
+  background: var(--background-white);
+  border-radius: 8px;
+  position: relative;
+  height: 100%;
+}
+
+.tableTopCont {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.tableControls {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 16px;
+  background: var(--background-white);
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.searchCont {
+  flex: 1;
+}
+
+.tableWrapper {
+  position: relative;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead th {
+  text-align: left;
+  padding: 0px 8px;
+  height: 24px;
+  background: var(--table-header);
+  user-select: none;
+  transition: 0.2s;
+  position: sticky;
+  top: 0px;
+  z-index: 2;
+  box-shadow: inset 0px 0px 1px 0px var(--border-gray);
+}
+
+.table.withSearch thead th {
+  top: 64px;
+}
+
+.table thead th:first-child {
+  border-left: none;
+}
+
+.table thead th:last-child {
+  border-right: none;
+}
+
+.table th .trCont {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.tableFooter {
+  position: sticky;
+  bottom: 0;
+  background: var(--table-header);
+  font-weight: 600;
+}
+
+.tableFooter td {
+  padding: 8px 12px;
+  text-align: right;
+  box-shadow: inset 0px 0px 1px 0px var(--border-gray);
+}
+
+.clickableHeader:hover {
+  cursor: pointer;
+  background: var(--table-header-hover);
+}
+
+.clickableHeader:active {
+  background: var(--table-header-active);
+}
+
+.table td {
+  padding: 4px 8px;
+  height: 36px;
+  border: 1px solid var(--border-gray60);
+  transition: 0.2s;
+}
+
+.table td:first-child {
+  border-left: none;
+}
+
+.table td:last-child {
+  border-right: none;
+}
+
+.table tbody tr:first-child td {
+  border-top: none;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table.withPagination tbody tr:last-child td {
+  border-bottom: 1px solid var(--border-gray60);
+}
+
+.table tbody tr:hover td {
+  background: var(--background-blue10);
+}
+
+.empty {
+  text-align: center;
+  color: var(--text-gray);
+  padding: 16px 0;
+}
+
+.paginationContainer {
+  background: var(--background-whitegray);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.paginationButtons {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.paginationLengthRows {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50%;
+  height: 32px;
+}
+
+.paginationShowRows {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  width: 50%;
+}
+
+.paginationShowRows .select {
+  width: 75px;
+}
+
+.dots {
+  font-size: 14px;
+  padding: 0 4px;
+}

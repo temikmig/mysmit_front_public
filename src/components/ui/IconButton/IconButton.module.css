@@ -1,0 +1,63 @@
+.iconButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.iconButton.big {
+  width: 32px;
+  height: 32px;
+}
+
+.iconButton.big svg {
+  width: 20px;
+  height: 20px;
+}
+
+.iconButton.medium {
+  width: 24px;
+  height: 24px;
+}
+
+.iconButton.medium svg {
+  width: 16px;
+  height: 16px;
+}
+
+.iconButton.small {
+  width: 20px;
+  height: 20px;
+}
+
+.iconButton.small svg {
+  width: 12px;
+  height: 12px;
+}
+
+.primary:hover {
+  background: var(--button-primary);
+}
+
+.outline:hover {
+  background: var(--background-blue10);
+}
+
+.iconButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.iconButton:active {
+  transform: scale(0.95);
+}
+
+.iconButton svg {
+  color: var(--icons-blue);
+}

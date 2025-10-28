@@ -1,0 +1,63 @@
+.purchaseInvoiceCardCont {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.purchaseInvoiceHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px var(--border-gray) solid;
+  padding: 0px 0px 8px 0px;
+}
+
+.purchaseInvoiceProductsCont {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.purchaseInvoiceTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.purchaseInvoiceTable th,
+.purchaseInvoiceTable td {
+  padding: 4px 8px;
+  text-align: left;
+  border-left: 1px solid var(--border-whitegray);
+}
+
+.purchaseInvoiceTable th:first-child,
+.purchaseInvoiceTable td:first-child {
+  border-left: none;
+}
+
+.purchaseInvoiceTable td {
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.purchaseInvoiceTable th {
+  background: var(--background-whitegray);
+  box-shadow: inset 0px 0px 1px 0px var(--border-gray);
+  position: sticky;
+  top: 0px;
+}
+
+.purchaseInvoiceTable tr:hover td {
+  background: var(--background-whitegray);
+}
+
+.purchaseInvoiceTable tr.total td {
+  background: var(--background-whitegray);
+  box-shadow: inset 0px 0px 1px 0px var(--border-gray);
+  border-bottom: none;
+  position: sticky;
+  bottom: 0px;
+}
+
+.right {
+  text-align: right !important;
+}

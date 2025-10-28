@@ -1,0 +1,13 @@
+.ProductWriteOffHistoryCont {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.batchDateCont {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  line-height: 24px;
+}

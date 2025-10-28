@@ -1,0 +1,40 @@
+.dataGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 4px;
+  background: var(--background-white);
+  border: 1px var(--border-gray60) solid;
+  border-radius: 8px;
+  flex: 1;
+  position: relative;
+}
+
+.dataGridItem {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 4px 8px;
+}
+
+.dataGridTitle {
+  color: var(--text-black60);
+}
+
+.dataGridDescription {
+  color: var(--text-black);
+  word-break: break-word;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.empty {
+  color: var(--text-gray);
+}
+
+.reloadButtonCont {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}

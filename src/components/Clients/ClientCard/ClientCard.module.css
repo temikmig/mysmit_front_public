@@ -1,0 +1,24 @@
+.clientCardCont {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.clientCarsCont {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.clientCarItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.buttonsCont {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}

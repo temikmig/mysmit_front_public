@@ -1,0 +1,27 @@
+.BRONZE {
+  background: var(--global-client-loyalty-card-bronze);
+}
+
+.SILVER {
+  background: var(--global-client-loyalty-card-silver);
+}
+
+.GOLD {
+  background: var(--global-client-loyalty-card-gold);
+}
+
+.PLATINUM {
+  background: var(--global-client-loyalty-card-platinum);
+}
+
+.BRILLIANT {
+  background: var(--global-client-loyalty-card-brilliant);
+}
+
+.BRONZE,
+.SILVER,
+.GOLD,
+.PLATINUM,
+.BRILLIANT {
+  color: var(--text-black);
+}

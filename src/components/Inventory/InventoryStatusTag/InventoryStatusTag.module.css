@@ -1,0 +1,15 @@
+.DRAFT {
+  background: var(--global-status-draft);
+}
+
+.AWAITING_MANAGER {
+  background: var(--global-status-awaiting);
+}
+
+.APPROVED {
+  background: var(--global-status-approved);
+}
+
+.REJECTED {
+  background: var(--global-status-rejected);
+}

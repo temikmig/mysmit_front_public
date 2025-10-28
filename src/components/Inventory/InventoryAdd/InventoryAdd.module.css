@@ -1,0 +1,58 @@
+.inventoryAddCont {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inventoryHeadCont {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  padding: 0px 0px 8px 0px;
+  border-bottom: 1px var(--border-gray) solid;
+}
+
+.oneLineCont {
+  display: flex;
+  gap: 8px;
+}
+
+.inventoryList {
+  border-collapse: collapse;
+  background: var(--background-white);
+  border-radius: 8px;
+}
+
+.inventoryItem td {
+  border: 1px var(--border-gray) solid;
+  border-left: none;
+  border-right: none;
+  padding: 4px;
+}
+
+.inventoryItem:first-child td {
+  border-top: none;
+}
+
+.inventoryItem:last-child td {
+  border-bottom: none;
+}
+
+.inventoryItem td.diffCol {
+  width: 75px;
+  text-align: center;
+  border-right: 1px var(--border-gray) solid;
+}
+
+.inventoryItem td.actionCol {
+  width: 32px;
+}
+
+.inventoryItem p {
+  line-height: 32px;
+}
+
+.buttonsCont {
+  display: flex;
+  justify-content: flex-end;
+}

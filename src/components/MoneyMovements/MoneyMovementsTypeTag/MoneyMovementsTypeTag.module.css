@@ -1,0 +1,11 @@
+.INCOME {
+  background: var(--background-green);
+}
+
+.OUTCOME {
+  background: var(--background-red);
+}
+
+.TRANSFER {
+  background: var(--background-orange);
+}

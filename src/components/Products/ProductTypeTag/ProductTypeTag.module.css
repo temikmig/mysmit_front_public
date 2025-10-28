@@ -1,0 +1,25 @@
+.MATERIAL {
+  background: var(--global-product-type-material);
+}
+
+.CONSUMABLE {
+  background: var(--global-product-type-consumable);
+}
+
+.TOOL {
+  background: var(--global-product-type-tool);
+}
+
+.EQUIPMENT {
+  background: var(--global-product-type-equipment);
+}
+
+.CHEMICAL {
+  background: var(--global-product-type-chemical);
+}
+
+.BUSINESS_COST_MATERIAL,
+.BUSINESS_COST_STORAGE,
+.BUSINESS_COST_EQUIPMENT {
+  background: var(--global-product-type-business-cost);
+}

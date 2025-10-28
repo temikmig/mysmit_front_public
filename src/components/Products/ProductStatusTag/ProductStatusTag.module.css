@@ -1,0 +1,7 @@
+.ACTIVE {
+  background: var(--global-product-status-active);
+}
+
+.HIDDEN {
+  background: var(--global-product-status-hidden);
+}
