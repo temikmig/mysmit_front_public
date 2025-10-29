@@ -1,5 +1,4 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryWithReauth } from "./baseQuery";
+import { baseApi } from "./baseApi";
 import {
   AddBusinessExpenseInput,
   BusinessExpense,
@@ -7,18 +6,15 @@ import {
   EditBusinessExpenseInput,
 } from "../common/types";
 
-export const businessExpensesApi = createApi({
-  reducerPath: "businessExpensesApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["BusinessExpense"],
+export const businessExpensesApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllBusinessExpenses: builder.query<BusinessExpensesSummary, void>({
       query: () => `/business-expenses`,
-      providesTags: ["BusinessExpense"],
+      providesTags: ["Global"],
     }),
     getBusinessExpenseById: builder.query<BusinessExpense, string>({
       query: (id) => `/business-expenses/${id}`,
-      providesTags: ["BusinessExpense"],
+      providesTags: ["Global"],
     }),
     addBusinessExpense: builder.mutation<
       BusinessExpense,
@@ -29,7 +25,7 @@ export const businessExpensesApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["BusinessExpense"],
+      invalidatesTags: ["Global"],
     }),
     editBusinessExpense: builder.mutation<
       BusinessExpense,
@@ -40,7 +36,7 @@ export const businessExpensesApi = createApi({
         method: "PUT",
         body: data,
       }),
-      invalidatesTags: ["BusinessExpense"],
+      invalidatesTags: ["Global"],
     }),
     deactivateBusinessExpense: builder.mutation<
       { success: boolean; id: string },
@@ -50,7 +46,7 @@ export const businessExpensesApi = createApi({
         url: `/business-expenses/deactivate/${id}`,
         method: "PUT",
       }),
-      invalidatesTags: ["BusinessExpense"],
+      invalidatesTags: ["Global"],
     }),
     activateBusinessExpense: builder.mutation<
       { success: boolean; id: string },
@@ -60,7 +56,7 @@ export const businessExpensesApi = createApi({
         url: `/business-expenses/activate/${id}`,
         method: "PUT",
       }),
-      invalidatesTags: ["BusinessExpense"],
+      invalidatesTags: ["Global"],
     }),
     deleteBusinessExpense: builder.mutation<
       { success: boolean; id: string },
@@ -70,7 +66,7 @@ export const businessExpensesApi = createApi({
         url: `/business-expenses/delete/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["BusinessExpense"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });

@@ -232,7 +232,7 @@ export const useHandlers = () => {
 
   // чеклисты
 
-  const handleChecklistAdd = (onSuccess: () => void) => {
+  const handleChecklistAdd = (onSuccess?: () => void) => {
     const modalId = openModal({
       title: "Создание чек-листа",
       content: (
@@ -981,13 +981,12 @@ export const useHandlers = () => {
     });
   };
 
-  const handleInventoryCard = (inventoryId: string, refetch?: () => void) => {
+  const handleInventoryCard = (inventoryId: string) => {
     const modalId = openModal({
       content: (
         <InventoryCard
           inventoryId={inventoryId}
           closeModal={() => closeModal(modalId)}
-          refetch={() => refetch?.()}
         />
       ),
     });

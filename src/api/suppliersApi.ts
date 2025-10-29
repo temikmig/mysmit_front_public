@@ -1,15 +1,11 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryWithReauth } from "./baseQuery";
+import { baseApi } from "./baseApi";
 import { Supplier } from "../common/types";
 
-export const suppliersApi = createApi({
-  reducerPath: "suppliersApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["Supplier"],
+export const suppliersApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getSupplier: builder.query<Supplier, number>({
       query: (id) => `/suppliers/${id}`,
-      providesTags: ["Supplier"],
+      providesTags: ["Global"],
     }),
     getSuppliersList: builder.query<
       { suppliers: Supplier[]; total: number },
@@ -41,13 +37,14 @@ export const suppliersApi = createApi({
         if (limit) params.append("limit", String(limit));
         return `/suppliers/search?${params.toString()}`;
       },
+      providesTags: ["Global"],
     }),
     addSupplier: builder.mutation<
       Supplier,
       { name: string; contactInfo?: string }
     >({
       query: (body) => ({ url: "/suppliers/add", method: "POST", body }),
-      invalidatesTags: ["Supplier"],
+      invalidatesTags: ["Global"],
     }),
     editSupplier: builder.mutation<
       Supplier,
@@ -58,14 +55,14 @@ export const suppliersApi = createApi({
         method: "PUT",
         body: data,
       }),
-      invalidatesTags: ["Supplier"],
+      invalidatesTags: ["Global"],
     }),
     deleteSupplier: builder.mutation<{ success: boolean; id: number }, number>({
       query: (id) => ({
         url: `/suppliers/delete/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Supplier"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });

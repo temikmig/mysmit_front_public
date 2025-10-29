@@ -14,7 +14,6 @@ interface BusinessExpensesProductsTableProps {
   title: string;
   total: number;
   totalPerMinute: number;
-  refetch: () => void;
 }
 
 export const BusinessExpensesProductsTable = ({
@@ -22,7 +21,6 @@ export const BusinessExpensesProductsTable = ({
   title,
   total,
   totalPerMinute,
-  refetch,
 }: BusinessExpensesProductsTableProps) => {
   const { handlePurchaseInvoiceAdd, handleProductCard } = useHandlers();
 
@@ -83,7 +81,7 @@ export const BusinessExpensesProductsTable = ({
         <Button
           icon={<AppsAddIcon />}
           onClick={() => {
-            handlePurchaseInvoiceAdd(undefined, refetch);
+            handlePurchaseInvoiceAdd();
           }}
         >
           Создать накладную

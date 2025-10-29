@@ -15,12 +15,10 @@ import { useHandlers } from "../../../common/hooks";
 
 interface PurchaseInvoicesActionsProps {
   purchaseInvoice: PurchaseInvoice;
-  refetch: () => void;
 }
 
 export const PurchaseInvoicesActions = ({
   purchaseInvoice,
-  refetch,
 }: PurchaseInvoicesActionsProps) => {
   const {
     handlePurchaseInvoiceCard,

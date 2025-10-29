@@ -23,11 +23,7 @@ import { ClientLoyaltyCardTag } from "../../components/Clients/ClientLoyaltyCard
 import styles from "./ClientsPage.module.css";
 import { IconButton } from "../../components/ui/IconButton";
 
-interface RightTableContProps {
-  refetch: () => void;
-}
-
-const RightTableCont = ({ refetch }: RightTableContProps) => {
+const RightTableCont = () => {
   const [isActionsOpen, setIsActionsOpen] = useState(false);
 
   const { handleClientAdd } = useHandlers();
@@ -39,7 +35,7 @@ const RightTableCont = ({ refetch }: RightTableContProps) => {
       label: "Добавить клиента",
       color: "blue",
       onClick: () => {
-        handleClientAdd(refetch);
+        handleClientAdd();
       },
     },
   ];
@@ -79,7 +75,7 @@ export const ClientsPage = () => {
     undefined
   );
 
-  const { data, isLoading, refetch } = useGetClientsListQuery({
+  const { data, isLoading } = useGetClientsListQuery({
     page,
     limit,
     search,
@@ -174,7 +170,7 @@ export const ClientsPage = () => {
           <IconButton
             tooltip="Распределить"
             onClick={() => {
-              handleClientTransferLoyaltyBalanceReserve(c.id, refetch);
+              handleClientTransferLoyaltyBalanceReserve(c.id);
             }}
             variant="outline"
             icon={<ShuffleIcon />}
@@ -185,7 +181,7 @@ export const ClientsPage = () => {
     {
       key: "actions",
       sort: false,
-      render: (_, c) => <ClientsActions client={c} refetch={refetch} />,
+      render: (_, c) => <ClientsActions client={c} />,
       width: 96,
     },
   ];
@@ -221,7 +217,7 @@ export const ClientsPage = () => {
       sortColumn={sortColumn}
       sortOrder={sortOrder}
       onSortChange={handleSortChange}
-      rightContainer={<RightTableCont refetch={refetch} />}
+      rightContainer={<RightTableCont />}
     />
   );
 };

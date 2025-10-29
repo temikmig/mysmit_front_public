@@ -77,21 +77,8 @@ export const PRODUCT_STATUS_LABELS: Record<ProductStatus, string> = {
 export const ProductTypeEnum = {
   MATERIAL: "MATERIAL",
   CONSUMABLE: "CONSUMABLE",
-  CHEMICAL: "CHEMICAL",
   TOOL: "TOOL",
   EQUIPMENT: "EQUIPMENT",
-
-  WRAPPING_MATERIAL: "WRAPPING_MATERIAL",
-  WRAPPING_CONSUMABLE: "WRAPPING_CONSUMABLE",
-  WRAPPING_CHEMICAL: "WRAPPING_CHEMICAL",
-  WRAPPING_TOOL: "WRAPPING_TOOL",
-  WRAPPING_EQUIPMENT: "WRAPPING_EQUIPMENT",
-
-  TINING_MATERIAL: "TINING_MATERIAL",
-  TINING_CONSUMABLE: "TINING_CONSUMABLE",
-  TINING_CHEMICAL: "TINING_CHEMICAL",
-  TINING_TOOL: "TINING_TOOL",
-  TINING_EQUIPMENT: "TINING_EQUIPMENT",
 
   BUSINESS_COST_MATERIAL: "BUSINESS_COST_MATERIAL",
   BUSINESS_COST_STORAGE: "BUSINESS_COST_STORAGE",
@@ -104,21 +91,8 @@ export type ProductType =
 export const PRODUCT_TYPES_LABELS: Record<ProductType, string> = {
   MATERIAL: "Материалы",
   CONSUMABLE: "Одноразка",
-  CHEMICAL: "Химия",
   TOOL: "Инструмент",
   EQUIPMENT: "Оборудование",
-
-  WRAPPING_MATERIAL: "Материалы (оклейка)",
-  WRAPPING_CONSUMABLE: "Одноразка (оклейка)",
-  WRAPPING_CHEMICAL: "Химия (оклейка)",
-  WRAPPING_TOOL: "Инструмент (оклейка)",
-  WRAPPING_EQUIPMENT: "Оборудование (оклейка)",
-
-  TINING_MATERIAL: "Материалы (тонировка)",
-  TINING_CONSUMABLE: "Одноразка (тонировка)",
-  TINING_CHEMICAL: "Химия (тонировка)",
-  TINING_TOOL: "Инструмент (тонировка)",
-  TINING_EQUIPMENT: "Оборудование (тонировка)",
 
   BUSINESS_COST_MATERIAL: "Материалы БЗ",
   BUSINESS_COST_STORAGE: "Хранение БЗ",
@@ -223,4 +197,11 @@ export interface WriteoffPriceHistoryItem {
   price: number;
   priceOne: number;
   comment: string;
+}
+
+export interface ProductFundData {
+  difference: number;
+  fundBalance: number;
+  fundName: string;
+  totalReserves: number;
 }

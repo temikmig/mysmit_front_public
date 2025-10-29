@@ -9,12 +9,12 @@ import styles from "./ProfileSettingsPage.module.css";
 import { useHandlers } from "../../common/hooks";
 
 export const ProfileSettingsPage = () => {
-  const { data: user, isLoading, refetch } = useGetUserMeQuery();
+  const { data: user, isLoading } = useGetUserMeQuery();
 
   const { handleUserEditMe } = useHandlers();
 
   const handleEdit = () => {
-    handleUserEditMe(refetch);
+    handleUserEditMe();
   };
 
   if (isLoading) return <LoaderPage />;

@@ -12,7 +12,7 @@ interface ServiceCardProps {
 }
 
 export const ServiceCard = ({ serviceId }: ServiceCardProps) => {
-  const { data: service, isLoading, refetch } = useGetServiceQuery(serviceId);
+  const { data: service, isLoading } = useGetServiceQuery(serviceId);
 
   const { handleServiceEdit } = useHandlers();
 
@@ -44,7 +44,7 @@ export const ServiceCard = ({ serviceId }: ServiceCardProps) => {
           <Button
             icon={<EditIcon />}
             onClick={() => {
-              handleServiceEdit(serviceId, refetch);
+              handleServiceEdit(serviceId);
             }}
           >
             Редактировать услугу

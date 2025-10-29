@@ -177,7 +177,7 @@ export const AutocompleteInput = <T,>({
         onChange(newValues, newOptions);
       }
 
-      setInputValue("");
+      // setInputValue("");
     } else {
       onChange(option.value, option);
       setInputValue(option.label);

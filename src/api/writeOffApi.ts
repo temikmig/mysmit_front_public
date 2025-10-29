@@ -1,29 +1,9 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryWithReauth } from "./baseQuery";
+import { baseApi } from "./baseApi";
+import { StockMovementWriteOff, WriteOffArgs } from "../common/types";
 
-export interface StockMovement {
-  id: number;
-  productId: number;
-  quantity: number;
-  comment?: string;
-  writeoffPrice: number;
-  reserveValue: number;
-  createdAt: string;
-}
-
-export interface WriteOffArgs {
-  productId: number;
-  quantity?: number | null;
-  resourceQuantity?: number | null;
-  comment?: string | null;
-}
-
-export const writeOffApi = createApi({
-  reducerPath: "writeOffApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["writeOff", "Product"],
+export const writeOffApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    createWriteOff: build.mutation<StockMovement, WriteOffArgs>({
+    createWriteOff: build.mutation<StockMovementWriteOff, WriteOffArgs>({
       query: ({ productId, quantity, resourceQuantity, comment }) => ({
         url: "/write-off/manual",
         method: "POST",
@@ -34,7 +14,7 @@ export const writeOffApi = createApi({
           comment,
         },
       }),
-      invalidatesTags: ["writeOff", "Product"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });

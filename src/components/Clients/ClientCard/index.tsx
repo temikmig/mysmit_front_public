@@ -18,7 +18,7 @@ interface ClientCardProps {
 }
 
 export const ClientCard = ({ clientId }: ClientCardProps) => {
-  const { data: client, isLoading, refetch } = useGetClientQuery(clientId);
+  const { data: client, isLoading } = useGetClientQuery(clientId);
 
   const {
     handleClientEdit,
@@ -94,14 +94,14 @@ export const ClientCard = ({ clientId }: ClientCardProps) => {
                     variant="outline"
                     tooltip="Редактировать"
                     icon={<EditIcon />}
-                    onClick={() => handleClientCarEdit(car.id, refetch)}
+                    onClick={() => handleClientCarEdit(car.id)}
                   />
                   <IconButton
                     size="small"
                     variant="outline"
                     tooltip="Удалить"
                     icon={<DeleteIcon />}
-                    onClick={() => handleClientCarDelete(car.id, refetch)}
+                    onClick={() => handleClientCarDelete(car.id)}
                   />
                 </div>
               ))}
@@ -122,7 +122,7 @@ export const ClientCard = ({ clientId }: ClientCardProps) => {
           <Button
             icon={<PlusMinIcon />}
             onClick={() => {
-              handleClientCarAdd(clientId, refetch);
+              handleClientCarAdd(clientId);
             }}
           >
             Добавить автомобиль
@@ -130,7 +130,7 @@ export const ClientCard = ({ clientId }: ClientCardProps) => {
           <Button
             icon={<EditIcon />}
             onClick={() => {
-              handleClientEdit(clientId, refetch);
+              handleClientEdit(clientId);
             }}
           >
             Редактировать клиента

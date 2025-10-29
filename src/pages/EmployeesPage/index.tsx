@@ -22,11 +22,7 @@ import { IconButton } from "../../components/ui/IconButton";
 
 import styles from "./EmployeesPage.module.css";
 
-interface RightTableContProps {
-  refetch: () => void;
-}
-
-const RightTableCont = ({ refetch }: RightTableContProps) => {
+const RightTableCont = () => {
   const [isActionsOpen, setIsActionsOpen] = useState(false);
 
   const { handleEmployeeAdd } = useHandlers();
@@ -38,7 +34,7 @@ const RightTableCont = ({ refetch }: RightTableContProps) => {
       label: "Добавить сотрудника",
       color: "blue",
       onClick: () => {
-        handleEmployeeAdd(refetch);
+        handleEmployeeAdd();
       },
     },
   ];
@@ -84,7 +80,7 @@ export const EmployeesPage = () => {
     handleEmployeeTransferSalaryReserve,
   } = useHandlers();
 
-  const { data, isLoading, refetch } = useGetEmployeesListQuery({
+  const { data, isLoading } = useGetEmployeesListQuery({
     page,
     limit,
     search,
@@ -151,7 +147,7 @@ export const EmployeesPage = () => {
           <IconButton
             tooltip="Распределить"
             onClick={() => {
-              handleEmployeeTransferSalaryReserve(e.id, refetch);
+              handleEmployeeTransferSalaryReserve(e.id);
             }}
             variant="outline"
             icon={<ShuffleIcon />}
@@ -162,7 +158,7 @@ export const EmployeesPage = () => {
     {
       key: "actions",
       sort: false,
-      render: (_, e) => <EmployeesActions employee={e} refetch={refetch} />,
+      render: (_, e) => <EmployeesActions employee={e} />,
       width: 138,
     },
   ];
@@ -198,7 +194,7 @@ export const EmployeesPage = () => {
       sortColumn={sortColumn}
       sortOrder={sortOrder}
       onSortChange={handleSortChange}
-      rightContainer={<RightTableCont refetch={refetch} />}
+      rightContainer={<RightTableCont />}
     />
   );
 };

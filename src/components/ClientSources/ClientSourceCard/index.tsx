@@ -12,11 +12,8 @@ interface ClientSourceCardProps {
 }
 
 export const ClientSourceCard = ({ clientSourceId }: ClientSourceCardProps) => {
-  const {
-    data: clientSource,
-    isLoading,
-    refetch,
-  } = useGetClientSourceQuery(clientSourceId);
+  const { data: clientSource, isLoading } =
+    useGetClientSourceQuery(clientSourceId);
 
   const { handleClientSourceEdit } = useHandlers();
 
@@ -40,7 +37,7 @@ export const ClientSourceCard = ({ clientSourceId }: ClientSourceCardProps) => {
           <Button
             icon={<EditIcon />}
             onClick={() => {
-              handleClientSourceEdit(clientSourceId, refetch);
+              handleClientSourceEdit(clientSourceId);
             }}
           >
             Редактировать источник

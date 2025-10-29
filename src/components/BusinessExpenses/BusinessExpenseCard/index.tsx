@@ -16,11 +16,8 @@ interface BusinessExpenseCardProps {
 export const BusinessExpenseCard = ({
   businessExpenseId,
 }: BusinessExpenseCardProps) => {
-  const {
-    data: businessExpense,
-    isLoading,
-    refetch,
-  } = useGetBusinessExpenseByIdQuery(businessExpenseId);
+  const { data: businessExpense, isLoading } =
+    useGetBusinessExpenseByIdQuery(businessExpenseId);
 
   const { handleBusinessExpenseEdit } = useHandlers();
 
@@ -55,7 +52,7 @@ export const BusinessExpenseCard = ({
           <Button
             icon={<EditIcon />}
             onClick={() => {
-              handleBusinessExpenseEdit(businessExpenseId, refetch);
+              handleBusinessExpenseEdit(businessExpenseId);
             }}
           >
             Редактировать статью

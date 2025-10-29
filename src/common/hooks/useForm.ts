@@ -98,6 +98,7 @@ export function useForm<Schema extends yup.AnyObjectSchema>(
     const { name, value, type } = e.target;
     let finalValue: unknown = value;
 
+    // если тип number, он уже приходит как число
     if (type === "number" && typeof value === "string") {
       finalValue = value === "" ? undefined : Number(value.replace(",", "."));
     }
@@ -106,6 +107,7 @@ export function useForm<Schema extends yup.AnyObjectSchema>(
 
     if (name !== "password") sessionStorage.setItem(name, String(value));
 
+    // валидация
     if (validationSchema) {
       try {
         await validationSchema.validateAt(name, {

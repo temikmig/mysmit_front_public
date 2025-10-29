@@ -21,7 +21,6 @@ import { useHandlers } from "../../../common/hooks";
 
 interface ProductCardProps {
   productId: number;
-  refetch?: () => void;
 }
 
 export const ProductCard = ({ productId }: ProductCardProps) => {
@@ -45,7 +44,9 @@ export const ProductCard = ({ productId }: ProductCardProps) => {
       },
       { title: "Короткое наим.", description: product.shortName || undefined },
       {
-        title: "Услуги",
+        title: `Услуги${
+          product.services.length > 0 ? ` (${product.services.length})` : ``
+        }`,
         description:
           (product.services.length > 0 && (
             <div className={styles.productServicesCont}>

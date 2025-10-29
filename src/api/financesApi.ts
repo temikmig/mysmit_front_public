@@ -1,20 +1,18 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryWithReauth } from "./baseQuery";
+import { baseApi } from "./baseApi";
 import {
   BalanceResponse,
   MoneyMovement,
   Fund,
   MoneySource,
+  ProductType,
+  ProductFundData,
 } from "../common/types";
 
-export const financesApi = createApi({
-  reducerPath: "financesApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["MoneyMovement", "MoneySource", "Fund"],
+export const financesApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getBalance: builder.query<BalanceResponse, void>({
       query: () => "/finances/balance",
-      providesTags: ["MoneySource", "Fund"],
+      providesTags: ["Global"],
     }),
     getMoneyMovementsList: builder.query<
       { moneyMovements: MoneyMovement[]; total: number },
@@ -35,7 +33,7 @@ export const financesApi = createApi({
         if (sortOrder) params.append("sortOrder", sortOrder);
         return `/finances/movements?${params.toString()}`;
       },
-      providesTags: ["MoneyMovement"],
+      providesTags: ["Global"],
     }),
     getSourcesSearch: builder.query<
       MoneySource[],
@@ -47,6 +45,7 @@ export const financesApi = createApi({
         if (limit) params.append("limit", String(limit));
         return `/finances/sources?${params.toString()}`;
       },
+      providesTags: ["Global"],
     }),
     getFundsSearch: builder.query<
       Fund[],
@@ -59,6 +58,7 @@ export const financesApi = createApi({
         if (limit) params.append("limit", String(limit));
         return `/finances/funds?${params.toString()}`;
       },
+      providesTags: ["Global"],
     }),
     getChildFundsSearch: builder.query<
       Fund[],
@@ -71,30 +71,35 @@ export const financesApi = createApi({
         if (limit) params.append("limit", String(limit));
         return `/finances/funds/${parentId}/children?${params.toString()}`;
       },
+      providesTags: ["Global"],
     }),
     getSource: builder.query<MoneySource, string>({
       query: (id) => `/finances/source/${id}`,
-      providesTags: ["MoneySource"],
+      providesTags: ["Global"],
     }),
     getFund: builder.query<Fund, string>({
       query: (id) => `/finances/fund/${id}`,
-      providesTags: ["Fund"],
+      providesTags: ["Global"],
+    }),
+    getProductsFund: builder.query<ProductFundData, ProductType>({
+      query: (type) => `/finances/product-fund/${type}`,
+      providesTags: ["Global"],
     }),
     getSalaryFund: builder.query<Fund, void>({
       query: () => `/finances/salary-fund`,
-      providesTags: ["Fund"],
+      providesTags: ["Global"],
     }),
     getReserveFund: builder.query<Fund, void>({
       query: () => `/finances/reserve-fund`,
-      providesTags: ["Fund"],
+      providesTags: ["Global"],
     }),
     createMovement: builder.mutation<MoneyMovement, Partial<MoneyMovement>>({
       query: (body) => ({ url: "/finances/movements", method: "POST", body }),
-      invalidatesTags: ["MoneyMovement", "MoneySource", "Fund"],
+      invalidatesTags: ["Global"],
     }),
     addFund: builder.mutation<Fund, { name: string; parentId?: string }>({
       query: (body) => ({ url: "/finances/funds/add", method: "POST", body }),
-      invalidatesTags: ["Fund"],
+      invalidatesTags: ["Global"],
     }),
     editFund: builder.mutation<Fund, { id: string; name: string }>({
       query: ({ id, name }) => ({
@@ -102,7 +107,7 @@ export const financesApi = createApi({
         method: "PATCH",
         body: { name },
       }),
-      invalidatesTags: ["Fund"],
+      invalidatesTags: ["Global"],
     }),
     changeFundOrder: builder.mutation<
       { success: boolean },
@@ -113,10 +118,11 @@ export const financesApi = createApi({
         method: "PATCH",
         body: updates,
       }),
+      invalidatesTags: ["Global"],
     }),
     getMoneyMovement: builder.query<MoneyMovement, string>({
       query: (id) => `/finances/money-movement/${id}`,
-      providesTags: ["MoneyMovement"],
+      providesTags: ["Global"],
     }),
     editMoneyMovement: builder.mutation<
       MoneyMovement,
@@ -127,14 +133,14 @@ export const financesApi = createApi({
         method: "PATCH",
         body: data,
       }),
-      invalidatesTags: ["MoneyMovement"],
+      invalidatesTags: ["Global"],
     }),
     deleteMoneyMovement: builder.mutation<{ success: boolean }, string>({
       query: (id) => ({
         url: `/finances/money-movement/delete/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["MoneyMovement"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });
@@ -148,6 +154,7 @@ export const {
   useGetSourceQuery,
   useLazyGetSourceQuery,
   useGetFundQuery,
+  useGetProductsFundQuery,
   useGetSalaryFundQuery,
   useGetReserveFundQuery,
   useCreateMovementMutation,

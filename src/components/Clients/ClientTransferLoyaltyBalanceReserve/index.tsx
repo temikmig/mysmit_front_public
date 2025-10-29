@@ -35,17 +35,10 @@ export const ClientTransferLoyaltyBalanceReserve = ({
   const [createMovement, { isLoading: isLoadingCreate }] =
     useTransferClientLoyaltyBalaceReserveMutation();
 
-  const {
-    data: client,
-    isLoading,
-    refetch: refetchClient,
-  } = useGetClientQuery(clientId);
+  const { data: client, isLoading } = useGetClientQuery(clientId);
 
-  const {
-    data: reserveFund,
-    isLoading: reserveFundLoading,
-    refetch: refetchFund,
-  } = useGetReserveFundQuery();
+  const { data: reserveFund, isLoading: reserveFundLoading } =
+    useGetReserveFundQuery();
 
   const [transferMode, setTransferMode] = useState<
     "INCRACE" | "DECRACE" | "TRANSFER"
@@ -96,8 +89,6 @@ export const ClientTransferLoyaltyBalanceReserve = ({
       });
       form.resetForm();
       onSuccess?.();
-      refetchClient();
-      refetchFund();
     } catch (err) {
       const error = err as ApiError;
       showSnackbar({

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 import LoaderPage from "../../components/ui/LoaderPage";
 import { Table, type Column } from "../../components/ui/Table";
@@ -13,8 +13,9 @@ import {
   ContextMenu,
   type ContextMenuItem,
 } from "../../components/ui/ContextMenu";
-import { useGetProductsListQuery } from "../../api";
+import { useGetProductsFundQuery, useGetProductsListQuery } from "../../api";
 import {
+  PRODUCT_TYPES_LABELS,
   PRODUCT_UNIT_USAGE_LABELS_SHORT,
   type Product,
   type ProductType,
@@ -29,23 +30,20 @@ import { useHandlers } from "../../common/hooks";
 import { Dropdown } from "../../components/ui/Dropdown";
 import { Radio } from "../../components/ui/Radio";
 import clsx from "clsx";
+import { Select } from "../../components/ui/Select";
 
 interface ProductFilters {
   visibility: "active" | "hidden" | "all";
   stock: "positive" | "empty" | "all";
+  productType: ProductType | "ALL";
 }
 
 interface RightTableContProps {
-  refetch: () => void;
   filters: ProductFilters;
   onChangeFilters: (filters: Partial<ProductFilters>) => void;
 }
 
-const RightTableCont = ({
-  refetch,
-  filters,
-  onChangeFilters,
-}: RightTableContProps) => {
+const RightTableCont = ({ filters, onChangeFilters }: RightTableContProps) => {
   const [isActionsOpen, setIsActionsOpen] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
@@ -67,7 +65,7 @@ const RightTableCont = ({
       label: "Оформить накладную",
       color: "blue",
       onClick: () => {
-        handlePurchaseInvoiceAdd(undefined, refetch);
+        handlePurchaseInvoiceAdd();
       },
     },
   ];
@@ -83,6 +81,23 @@ const RightTableCont = ({
 
   return (
     <>
+      <div style={{ width: 200 }}>
+        <Select
+          value={filters.productType ?? "ALL"}
+          options={[
+            { value: "ALL", label: "Все" },
+            ...Object.entries(PRODUCT_TYPES_LABELS).map(([key, label]) => ({
+              value: key,
+              label,
+            })),
+          ]}
+          onChange={(val) => {
+            onChangeFilters({
+              productType: val as ProductType | "ALL",
+            });
+          }}
+        />
+      </div>
       <div ref={filterButtonRef}>
         <Button
           icon={<FilterIcon />}
@@ -165,6 +180,34 @@ const RightTableCont = ({
   );
 };
 
+interface FundInfoProps {
+  productType: ProductType;
+}
+
+const ProductsFund = ({ productType }: FundInfoProps) => {
+  const { data: productsFundData, isLoading } =
+    useGetProductsFundQuery(productType);
+
+  if (isLoading) return <LoaderPage />;
+  if (productsFundData)
+    return (
+      <div className={styles.productsFundCont}>
+        <p className={clsx("text_medium", styles.productsFundName)}>
+          <b>Фонд:</b> {productsFundData.fundName}
+        </p>
+        <p className={clsx("text_medium", styles.productsFundBalance)}>
+          <b>Баланс фонда:</b> {moneyFormat(productsFundData.fundBalance)}
+        </p>
+        <p className={clsx("text_medium", styles.productsFunTotalReserves)}>
+          <b>Баланс резервов:</b> {moneyFormat(productsFundData.totalReserves)}
+        </p>
+        <p className={clsx("text_medium", styles.productsFundDiff)}>
+          <b>Разница:</b> {moneyFormat(productsFundData.difference)}
+        </p>
+      </div>
+    );
+};
+
 export const StoragePage = () => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
@@ -178,6 +221,7 @@ export const StoragePage = () => {
   const [filters, setFilters] = useState({
     visibility: "active" as "active" | "hidden" | "all",
     stock: "all" as "positive" | "empty" | "all",
+    productType: "ALL" as ProductType | "ALL",
   });
 
   const handleChangeFilters = (newFilters: Partial<typeof filters>) => {
@@ -185,7 +229,7 @@ export const StoragePage = () => {
     setPage(1);
   };
 
-  const { data, isLoading, refetch } = useGetProductsListQuery({
+  const { data, isLoading } = useGetProductsListQuery({
     page,
     limit,
     search,
@@ -193,6 +237,7 @@ export const StoragePage = () => {
     sortOrder,
     visibility: filters.visibility,
     stock: filters.stock,
+    productType: filters.productType,
   });
 
   const { handleProductCard } = useHandlers();
@@ -305,7 +350,7 @@ export const StoragePage = () => {
       title: "Действия",
       align: "center",
       sort: false,
-      render: (_, p) => <StorageActions product={p} refetch={refetch} />,
+      render: (_, p) => <StorageActions product={p} />,
       width: 64,
     },
   ];
@@ -324,10 +369,6 @@ export const StoragePage = () => {
     []
   );
 
-  useEffect(() => {
-    refetch();
-  }, []);
-
   if (isLoading) return <LoaderPage />;
 
   return (
@@ -345,9 +386,13 @@ export const StoragePage = () => {
       sortColumn={sortColumn}
       sortOrder={sortOrder}
       onSortChange={handleSortChange}
+      preTableCont={
+        filters.productType !== "ALL" && (
+          <ProductsFund productType={filters.productType} />
+        )
+      }
       rightContainer={
         <RightTableCont
-          refetch={refetch}
           filters={filters}
           onChangeFilters={handleChangeFilters}
         />

@@ -14,11 +14,7 @@ import { useHandlers } from "../../common/hooks";
 import { ClickLink } from "../../components/ui/ClickLink";
 import { ClientSourcesActions } from "../../components/ClientSources";
 
-interface RightTableContProps {
-  refetch: () => void;
-}
-
-const RightTableCont = ({ refetch }: RightTableContProps) => {
+const RightTableCont = () => {
   const [isActionsOpen, setIsActionsOpen] = useState(false);
 
   const { handleClientSourceAdd } = useHandlers();
@@ -30,7 +26,7 @@ const RightTableCont = ({ refetch }: RightTableContProps) => {
       label: "Добавить источник",
       color: "blue",
       onClick: () => {
-        handleClientSourceAdd(refetch);
+        handleClientSourceAdd();
       },
     },
   ];
@@ -70,7 +66,7 @@ export const ClientSourcesPage = () => {
     undefined
   );
 
-  const { data, isLoading, refetch } = useGetClientSourcesListQuery({
+  const { data, isLoading } = useGetClientSourcesListQuery({
     page,
     limit,
     search,
@@ -100,9 +96,7 @@ export const ClientSourcesPage = () => {
     {
       key: "actions",
       sort: false,
-      render: (_, s) => (
-        <ClientSourcesActions clientSource={s} refetch={refetch} />
-      ),
+      render: (_, s) => <ClientSourcesActions clientSource={s} />,
       width: 96,
     },
   ];
@@ -138,7 +132,7 @@ export const ClientSourcesPage = () => {
       sortColumn={sortColumn}
       sortOrder={sortOrder}
       onSortChange={handleSortChange}
-      rightContainer={<RightTableCont refetch={refetch} />}
+      rightContainer={<RightTableCont />}
     />
   );
 };

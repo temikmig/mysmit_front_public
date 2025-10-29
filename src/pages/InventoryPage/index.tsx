@@ -15,11 +15,7 @@ import {
 } from "../../components/Inventory";
 import LoaderPage from "../../components/ui/LoaderPage";
 
-interface RightTableContProps {
-  refetch: () => void;
-}
-
-const RightTableCont = ({ refetch }: RightTableContProps) => {
+const RightTableCont = () => {
   const [isActionsOpen, setIsActionsOpen] = useState(false);
 
   const { handleInventoryAdd } = useHandlers();
@@ -31,7 +27,7 @@ const RightTableCont = ({ refetch }: RightTableContProps) => {
       label: "Создать инвентаризацию",
       color: "blue",
       onClick: () => {
-        handleInventoryAdd(refetch);
+        handleInventoryAdd();
       },
     },
   ];
@@ -71,7 +67,7 @@ export const InventoryPage = () => {
     undefined
   );
 
-  const { data, isLoading, refetch } = useGetInventoriesListQuery({
+  const { data, isLoading } = useGetInventoriesListQuery({
     page,
     limit,
     search,
@@ -89,7 +85,7 @@ export const InventoryPage = () => {
       render: (_, i) => (
         <ClickLink
           onClick={() => {
-            handleInventoryCard(i.id, refetch);
+            handleInventoryCard(i.id);
           }}
         >
           {`Инвентаризация от ${formatDateToText(
@@ -143,7 +139,7 @@ export const InventoryPage = () => {
     {
       key: "actions",
       sort: false,
-      render: (_, i) => <InventoryActions inventory={i} refetch={refetch} />,
+      render: (_, i) => <InventoryActions inventory={i} />,
       width: 52,
     },
   ];
@@ -179,7 +175,7 @@ export const InventoryPage = () => {
       sortColumn={sortColumn}
       sortOrder={sortOrder}
       onSortChange={handleSortChange}
-      rightContainer={<RightTableCont refetch={refetch} />}
+      rightContainer={<RightTableCont />}
     />
   );
 };

@@ -1,44 +1,40 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryWithReauth } from "./baseQuery";
+import { baseApi } from "./baseApi";
 import { MonthlyPlan, PiggyBank, PlanData } from "../common/types";
 
-export const plansApi = createApi({
-  reducerPath: "plansApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["Plans"],
+export const plansApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getMonthlyPlan: builder.query<MonthlyPlan, PlanData>({
       query: ({ year, month }) => `/plans/plan/${year}/${month}`,
-      providesTags: ["Plans"],
+      providesTags: ["Global"],
     }),
     getActiveMonthlyPlan: builder.query<MonthlyPlan | null, void>({
       query: () => `/plans/active`,
-      providesTags: ["Plans"],
+      providesTags: ["Global"],
     }),
     openMonthPlan: builder.mutation<void, PlanData>({
       query: ({ year, month }) => ({
         url: `/plans/open/${year}/${month}`,
         method: "POST",
       }),
-      invalidatesTags: ["Plans"],
+      invalidatesTags: ["Global"],
     }),
     closeMonthPlan: builder.mutation<void, PlanData>({
       query: ({ year, month }) => ({
         url: `/plans/close/${year}/${month}`,
         method: "POST",
       }),
-      invalidatesTags: ["Plans"],
+      invalidatesTags: ["Global"],
     }),
     getPiggyBank: builder.query<PiggyBank, string>({
       query: (id) => `/plans/piggy-bank/${id}`,
-      providesTags: ["Plans"],
+      providesTags: ["Global"],
     }),
     addPiggyBank: builder.mutation<
       PiggyBank,
       { name: string; plannedAmount: number }
     >({
       query: (body) => ({ url: "/plans/piggy-bank/add", method: "POST", body }),
-      invalidatesTags: ["Plans"],
+      invalidatesTags: ["Global"],
     }),
     editPiggyBank: builder.mutation<
       PiggyBank,
@@ -49,14 +45,14 @@ export const plansApi = createApi({
         method: "PUT",
         body: data,
       }),
-      invalidatesTags: ["Plans"],
+      invalidatesTags: ["Global"],
     }),
     deletePiggyBank: builder.mutation<{ success: boolean }, string>({
       query: (id) => ({
         url: `/plans/piggy-bank/delete/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Plans"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });

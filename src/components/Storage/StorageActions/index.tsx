@@ -15,13 +15,9 @@ import { ApiError } from "../../../api/baseQuery";
 
 interface StorageActionsProps {
   product: Product;
-  refetch: () => void;
 }
 
-export const StorageActions: React.FC<StorageActionsProps> = ({
-  product,
-  refetch,
-}) => {
+export const StorageActions: React.FC<StorageActionsProps> = ({ product }) => {
   const { showSnackbar } = useSnackbar();
   const {
     handleProductCard,
@@ -46,7 +42,6 @@ export const StorageActions: React.FC<StorageActionsProps> = ({
         message: successMsg.replace("{name}", product.name),
         mode: "success",
       });
-      refetch?.();
     } catch (err) {
       const error = err as ApiError;
       showSnackbar({
@@ -81,7 +76,7 @@ export const StorageActions: React.FC<StorageActionsProps> = ({
     {
       tooltip: "Поступление",
       icon: <AppsAddIcon color="var(--icons-green)" />,
-      onClick: () => handlePurchaseInvoiceAdd(product.id, refetch),
+      onClick: () => handlePurchaseInvoiceAdd(product.id),
     },
     {
       tooltip: "Списание",

@@ -1,17 +1,12 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryWithReauth } from "./baseQuery";
+import { baseApi } from "./baseApi";
 import { CreateInventoryDto, Inventory } from "../common/types";
 
-export const inventoryApi = createApi({
-  reducerPath: "inventoryApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["Inventory"],
+export const inventoryApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getInventory: builder.query<Inventory, string>({
       query: (id) => `/inventory/${id}`,
-      providesTags: ["Inventory"],
+      providesTags: ["Global"],
     }),
-
     getInventoriesList: builder.query<
       { inventories: Inventory[]; total: number },
       {
@@ -31,17 +26,16 @@ export const inventoryApi = createApi({
         if (sortOrder) params.append("sortOrder", sortOrder);
         return `/inventory/list?${params.toString()}`;
       },
+      providesTags: ["Global"],
     }),
-
     addInventory: builder.mutation<Inventory, CreateInventoryDto>({
       query: (body) => ({
         url: "/inventory/add",
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Inventory"],
+      invalidatesTags: ["Global"],
     }),
-
     editInventory: builder.mutation<
       Inventory,
       { id: string; data: Partial<Inventory> }
@@ -51,17 +45,15 @@ export const inventoryApi = createApi({
         method: "PUT",
         body: data,
       }),
-      invalidatesTags: ["Inventory"],
+      invalidatesTags: ["Global"],
     }),
-
     confirmInventory: builder.mutation<Inventory, { id: string }>({
       query: ({ id }) => ({
         url: `/inventory/${id}/confirm`,
         method: "POST",
       }),
-      invalidatesTags: ["Inventory"],
+      invalidatesTags: ["Global"],
     }),
-
     rejectInventory: builder.mutation<
       Inventory,
       { id: string; comment: string }
@@ -71,15 +63,14 @@ export const inventoryApi = createApi({
         method: "POST",
         body: { comment },
       }),
-      invalidatesTags: ["Inventory"],
+      invalidatesTags: ["Global"],
     }),
-
     deleteInventory: builder.mutation<void, { id: string }>({
       query: ({ id }) => ({
         url: `/inventory/${id}/delete`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Inventory"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });

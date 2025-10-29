@@ -1,15 +1,11 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryWithReauth } from "./baseQuery";
+import { baseApi } from "./baseApi";
 import { ClientSource } from "../common/types";
 
-export const clientSourcesApi = createApi({
-  reducerPath: "clientSourcesApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["ClientSource"],
+export const clientSourcesApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getClientSource: builder.query<ClientSource, string>({
       query: (id) => `/client-sources/${id}`,
-      providesTags: ["ClientSource"],
+      providesTags: ["Global"],
     }),
 
     getClientSourcesList: builder.query<
@@ -31,7 +27,7 @@ export const clientSourcesApi = createApi({
         if (sortOrder) params.append("sortOrder", sortOrder);
         return `/client-sources/list?${params.toString()}`;
       },
-      providesTags: ["ClientSource"],
+      providesTags: ["Global"],
     }),
 
     getClientSourcesSearch: builder.query<
@@ -44,7 +40,7 @@ export const clientSourcesApi = createApi({
         if (limit) params.append("limit", String(limit));
         return `/client-sources/search?${params.toString()}`;
       },
-      providesTags: ["ClientSource"],
+      providesTags: ["Global"],
     }),
 
     addClientSource: builder.mutation<
@@ -56,7 +52,7 @@ export const clientSourcesApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["ClientSource"],
+      invalidatesTags: ["Global"],
     }),
 
     editClientSource: builder.mutation<
@@ -68,7 +64,7 @@ export const clientSourcesApi = createApi({
         method: "PUT",
         body: data,
       }),
-      invalidatesTags: ["ClientSource"],
+      invalidatesTags: ["Global"],
     }),
 
     deleteClientSource: builder.mutation<{ success: boolean }, string>({
@@ -76,7 +72,7 @@ export const clientSourcesApi = createApi({
         url: `/client-sources/delete/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["ClientSource"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });

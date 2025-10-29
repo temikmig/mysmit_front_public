@@ -1,6 +1,6 @@
 .balanceTileCont {
   flex: 1;
-  min-width: 300px;
+  min-width: 275px;
   height: 148px;
   display: flex;
   flex-direction: column;

@@ -13,11 +13,7 @@ interface EmployeeCardProps {
 }
 
 export const EmployeeCard = ({ employeeId }: EmployeeCardProps) => {
-  const {
-    data: employee,
-    isLoading,
-    refetch,
-  } = useGetEmployeeQuery(employeeId);
+  const { data: employee, isLoading } = useGetEmployeeQuery(employeeId);
 
   const { handleEmployeeEdit } = useHandlers();
 
@@ -49,7 +45,7 @@ export const EmployeeCard = ({ employeeId }: EmployeeCardProps) => {
           <Button
             icon={<EditIcon />}
             onClick={() => {
-              handleEmployeeEdit(employeeId, refetch);
+              handleEmployeeEdit(employeeId);
             }}
           >
             Редактировать сотрудника

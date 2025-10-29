@@ -6,10 +6,9 @@ import { useHandlers } from "../../../common/hooks";
 
 interface ServicesActionsProps {
   client: Client;
-  refetch: () => void;
 }
 
-export const ClientsActions = ({ client, refetch }: ServicesActionsProps) => {
+export const ClientsActions = ({ client }: ServicesActionsProps) => {
   const { handleClientCard, handleClientEdit, handleClientDelete } =
     useHandlers();
 
@@ -26,14 +25,14 @@ export const ClientsActions = ({ client, refetch }: ServicesActionsProps) => {
         tooltip="Редактировать"
         icon={<EditIcon />}
         onClick={() => {
-          handleClientEdit(client.id, refetch);
+          handleClientEdit(client.id);
         }}
       />
       <TableAction
         tooltip="Удалить"
         icon={<DeleteIcon />}
         onClick={() => {
-          handleClientDelete(client.id, refetch);
+          handleClientDelete(client.id);
         }}
       />
     </TableActionsCont>

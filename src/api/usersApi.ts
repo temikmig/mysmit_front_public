@@ -1,19 +1,15 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
+import { baseApi } from "./baseApi";
 import type { User } from "../common/types";
-import { baseQueryWithReauth } from "./baseQuery";
 
-export const usersApi = createApi({
-  reducerPath: "usersApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["Me", "User"],
+export const usersApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getUser: builder.query<User, string>({
       query: (id) => `/users/${id}`,
-      providesTags: ["User"],
+      providesTags: ["Global"],
     }),
     getUserMe: builder.query<User, void>({
       query: () => "/users/me",
-      providesTags: [{ type: "Me" }],
+      providesTags: ["Global"],
     }),
     getUsers: builder.query<
       { users: User[]; total: number },
@@ -34,9 +30,11 @@ export const usersApi = createApi({
         if (sortOrder) params.append("sortOrder", sortOrder);
         return `/users/list?${params.toString()}`;
       },
+      providesTags: ["Global"],
     }),
     addUser: builder.mutation<User, Partial<User>>({
       query: (body) => ({ url: "/users/add", method: "POST", body }),
+      invalidatesTags: ["Global"],
     }),
     editUser: builder.mutation<User, { id: string; data: Partial<User> }>({
       query: ({ id, data }) => ({
@@ -44,6 +42,7 @@ export const usersApi = createApi({
         method: "PATCH",
         body: data,
       }),
+      invalidatesTags: ["Global"],
     }),
     editMe: builder.mutation<User, Partial<User>>({
       query: (data) => ({
@@ -51,10 +50,11 @@ export const usersApi = createApi({
         method: "PATCH",
         body: data,
       }),
-      invalidatesTags: [{ type: "Me" }],
+      invalidatesTags: ["Global"],
     }),
     deleteUser: builder.mutation<void, string>({
       query: (id) => ({ url: `/users/delete/${id}`, method: "DELETE" }),
+      invalidatesTags: ["Global"],
     }),
   }),
 });

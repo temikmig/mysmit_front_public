@@ -1,4 +1,4 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
+import { baseApi } from "./baseApi";
 import type {
   Checklist,
   ChecklistListArgs,
@@ -6,16 +6,12 @@ import type {
   ChecklistStats,
   CreateChecklistArgs,
 } from "../common/types";
-import { baseQueryWithReauth } from "./baseQuery";
 
-export const checklistsApi = createApi({
-  reducerPath: "checklistsApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["Checklist", "Product"],
+export const checklistsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getChecklist: builder.query<Checklist, string>({
       query: (id) => `/checklists/${id}`,
-      providesTags: ["Checklist"],
+      providesTags: ["Global"],
     }),
     getChecklistStats: builder.query<
       ChecklistStats,
@@ -25,7 +21,7 @@ export const checklistsApi = createApi({
         url: `/checklists/stats`,
         params: { dateFrom, dateTo, serviceId },
       }),
-      providesTags: ["Checklist"],
+      providesTags: ["Global"],
     }),
     getChecklistsList: builder.query<
       { checklists: Checklist[]; total: number },
@@ -40,7 +36,7 @@ export const checklistsApi = createApi({
         if (sortOrder) params.append("sortOrder", sortOrder);
         return `/checklists/list?${params.toString()}`;
       },
-      providesTags: ["Checklist"],
+      providesTags: ["Global"],
     }),
     getChecklistsListMonth: builder.query<
       ChecklistMonth,
@@ -65,7 +61,7 @@ export const checklistsApi = createApi({
         if (sortOrder) params.append("sortOrder", sortOrder);
         return `/checklists/list-month?${params.toString()}`;
       },
-      providesTags: ["Checklist"],
+      providesTags: ["Global"],
     }),
     createChecklist: builder.mutation<Checklist, CreateChecklistArgs>({
       query: (body) => ({
@@ -73,14 +69,14 @@ export const checklistsApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Checklist"],
+      invalidatesTags: ["Global"],
     }),
     confirmChecklist: builder.mutation<Checklist, string>({
       query: (id) => ({
         url: `/checklists/confirm/${id}`,
         method: "POST",
       }),
-      invalidatesTags: ["Checklist"],
+      invalidatesTags: ["Global"],
     }),
     invalidChecklist: builder.mutation<
       void,
@@ -91,7 +87,7 @@ export const checklistsApi = createApi({
         method: "PATCH",
         body: data,
       }),
-      invalidatesTags: ["Checklist", "Product"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });

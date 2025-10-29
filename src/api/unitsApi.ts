@@ -1,19 +1,15 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryWithReauth } from "./baseQuery";
+import { baseApi } from "./baseApi";
 import type { Unit } from "../common/types";
 
-export const unitsApi = createApi({
-  reducerPath: "unitsApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["Unit"],
+export const unitsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getUnits: builder.query<Unit[], void>({
       query: () => "/units",
-      providesTags: ["Unit"],
+      providesTags: ["Global"],
     }),
     createUnit: builder.mutation<Unit, { name: string; shortName: string }>({
       query: (body) => ({ url: "/units/create", method: "POST", body }),
-      invalidatesTags: ["Unit"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });

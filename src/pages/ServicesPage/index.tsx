@@ -15,11 +15,7 @@ import type { Service } from "../../common/types";
 import { useHandlers } from "../../common/hooks";
 import { ClickLink } from "../../components/ui/ClickLink";
 
-interface RightTableContProps {
-  refetch: () => void;
-}
-
-const RightTableCont = ({ refetch }: RightTableContProps) => {
+const RightTableCont = () => {
   const [isActionsOpen, setIsActionsOpen] = useState(false);
 
   const { handleServiceAdd } = useHandlers();
@@ -31,7 +27,7 @@ const RightTableCont = ({ refetch }: RightTableContProps) => {
       label: "Добавить услугу",
       color: "blue",
       onClick: () => {
-        handleServiceAdd(refetch, undefined);
+        handleServiceAdd();
       },
     },
   ];
@@ -71,7 +67,7 @@ export const ServicesPage = () => {
     undefined
   );
 
-  const { data, isLoading, refetch } = useGetServicesListQuery({
+  const { data, isLoading } = useGetServicesListQuery({
     page,
     limit,
     search,
@@ -111,7 +107,7 @@ export const ServicesPage = () => {
     {
       key: "actions",
       sort: false,
-      render: (_, s) => <ServicesActions service={s} refetch={refetch} />,
+      render: (_, s) => <ServicesActions service={s} />,
       width: 96,
     },
   ];
@@ -147,7 +143,7 @@ export const ServicesPage = () => {
       sortColumn={sortColumn}
       sortOrder={sortOrder}
       onSortChange={handleSortChange}
-      rightContainer={<RightTableCont refetch={refetch} />}
+      rightContainer={<RightTableCont />}
     />
   );
 };

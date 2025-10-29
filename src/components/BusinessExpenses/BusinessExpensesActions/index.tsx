@@ -15,12 +15,10 @@ import { TableActionsCont, TableAction } from "../../ui/TableActions";
 
 interface BusinessExpensesActionsProps {
   businessExpense: ManualExpenseItem;
-  refetch: () => void;
 }
 
 export const BusinessExpensesActions = ({
   businessExpense,
-  refetch,
 }: BusinessExpensesActionsProps) => {
   const { showSnackbar } = useSnackbar();
   const {
@@ -45,7 +43,6 @@ export const BusinessExpensesActions = ({
         message: successMsg.replace("{name}", businessExpense.name),
         mode: "success",
       });
-      refetch?.();
     } catch (err) {
       const error = err as ApiError;
       showSnackbar({
@@ -80,7 +77,7 @@ export const BusinessExpensesActions = ({
     {
       tooltip: "Редактировать",
       icon: <EditIcon />,
-      onClick: () => handleBusinessExpenseEdit(businessExpense.id, refetch),
+      onClick: () => handleBusinessExpenseEdit(businessExpense.id),
     },
 
     businessExpense.isActive
@@ -97,7 +94,7 @@ export const BusinessExpensesActions = ({
     {
       tooltip: "Удалить",
       icon: <DeleteIcon />,
-      onClick: () => handleBusinessExpenseDelete(businessExpense.id, refetch),
+      onClick: () => handleBusinessExpenseDelete(businessExpense.id),
     },
   ];
 

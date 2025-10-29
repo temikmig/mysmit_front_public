@@ -20,13 +20,11 @@ import styles from "./InventoryCard.module.css";
 interface InventoryCardProps {
   inventoryId: string;
   closeModal: () => void;
-  refetch: () => void;
 }
 
 export const InventoryCard = ({
   inventoryId,
   closeModal,
-  refetch,
 }: InventoryCardProps) => {
   const { data: inventory, isLoading } = useGetInventoryQuery(inventoryId);
 
@@ -203,7 +201,7 @@ export const InventoryCard = ({
                   size="small"
                   icon={<CheckIcon />}
                   onClick={() => {
-                    handleInventoryConfirm(inventoryId, refetch);
+                    handleInventoryConfirm(inventoryId);
                   }}
                 >
                   Подтвердить
@@ -213,7 +211,7 @@ export const InventoryCard = ({
                   size="small"
                   icon={<CrossCircleIcon />}
                   onClick={() => {
-                    handleInventoryReject(inventoryId, refetch);
+                    handleInventoryReject(inventoryId);
                   }}
                 >
                   Отклонить
@@ -227,7 +225,6 @@ export const InventoryCard = ({
               onClick={() => {
                 handleInventoryDelete(inventoryId, () => {
                   closeModal();
-                  refetch();
                 });
               }}
             >

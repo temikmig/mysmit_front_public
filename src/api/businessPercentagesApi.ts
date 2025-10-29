@@ -1,15 +1,11 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryWithReauth } from "./baseQuery";
+import { baseApi } from "./baseApi";
 import { BusinessPercentages } from "../common/types";
 
-export const businessPercentagesApi = createApi({
-  reducerPath: "businessPercentagesApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["BusinessPercentages"],
+export const businessPercentagesApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getBusinessPercentages: builder.query<BusinessPercentages | null, void>({
       query: () => "/business-percentages",
-      providesTags: ["BusinessPercentages"],
+      providesTags: ["Global"],
     }),
     addBusinessPercentages: builder.mutation<
       BusinessPercentages,
@@ -20,7 +16,7 @@ export const businessPercentagesApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["BusinessPercentages"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });

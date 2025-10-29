@@ -11,7 +11,6 @@ import styles from "./ProductWriteOffHistory.module.css";
 
 interface ProductWriteOffHistoryProps {
   productId: number;
-  refetch?: () => void;
 }
 
 export const ProductWriteOffHistory = ({

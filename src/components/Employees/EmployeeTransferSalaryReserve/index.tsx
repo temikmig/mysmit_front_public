@@ -35,17 +35,10 @@ export const EmployeeTransferSalaryReserve = ({
   const [createMovement, { isLoading: isLoadingCreate }] =
     useTransferEmployeeSalaryReserveMutation();
 
-  const {
-    data: employee,
-    isLoading,
-    refetch: refetchEmployee,
-  } = useGetEmployeeQuery(employeeId);
+  const { data: employee, isLoading } = useGetEmployeeQuery(employeeId);
 
-  const {
-    data: reserveFund,
-    isLoading: reserveFundLoading,
-    refetch: refetchFund,
-  } = useGetReserveFundQuery();
+  const { data: reserveFund, isLoading: reserveFundLoading } =
+    useGetReserveFundQuery();
 
   const [transferMode, setTransferMode] = useState<
     "INCRACE" | "DECRACE" | "TRANSFER"
@@ -96,8 +89,6 @@ export const EmployeeTransferSalaryReserve = ({
       });
       form.resetForm();
       onSuccess?.();
-      refetchEmployee();
-      refetchFund();
     } catch (err) {
       const error = err as ApiError;
       showSnackbar({

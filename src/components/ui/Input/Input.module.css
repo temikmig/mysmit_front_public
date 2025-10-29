@@ -99,11 +99,13 @@
   margin-top: 2px;
 }
 
+/* Helper */
 .helperText {
   color: var(--text-gray);
   margin-top: 2px;
 }
 
+/* Disabled */
 .disabled {
   pointer-events: none;
   opacity: 0.6;

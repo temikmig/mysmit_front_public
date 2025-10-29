@@ -1,20 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ChecklistStatusEnum, type Checklist } from "../../../common/types";
 import { BadgeIcon, CrossCircleIcon } from "../../../assets/icons";
-import { useModal } from "../../../common/hooks/useModal";
 import { TableAction, TableActionsCont } from "../../ui/TableActions";
-import { ChecklistCard } from "../ChecklistCard";
 import { useHandlers } from "../../../common/hooks";
 
 interface ChecklistActionsProps {
   checklist: Checklist;
-  refetch: () => void;
 }
 
-export const ChecklistActions = ({
-  checklist,
-  refetch,
-}: ChecklistActionsProps) => {
+export const ChecklistActions = ({ checklist }: ChecklistActionsProps) => {
   const { handleChecklistCard, handleChecklistInvalid } = useHandlers();
 
   return (

@@ -10,7 +10,7 @@ import LoaderPage from "../../components/ui/LoaderPage";
 import styles from "./BusinessExpensesPage.module.css";
 
 export const BusinessExpensesPage = () => {
-  const { data, isLoading, refetch } = useGetAllBusinessExpensesQuery();
+  const { data, isLoading } = useGetAllBusinessExpensesQuery();
 
   if (isLoading) return <LoaderPage />;
 
@@ -37,7 +37,6 @@ export const BusinessExpensesPage = () => {
             items={data.manualExpenses.items}
             total={data.manualExpenses.total}
             totalPerMinute={data.manualExpenses.totalPerMinute}
-            refetch={refetch}
           />
 
           <BusinessExpensesProductsTable
@@ -47,7 +46,6 @@ export const BusinessExpensesPage = () => {
             totalPerMinute={
               data.productExpenses.BUSINESS_COST_EQUIPMENT?.totalPerMinute
             }
-            refetch={refetch}
           />
 
           <BusinessExpensesProductsTable
@@ -57,7 +55,6 @@ export const BusinessExpensesPage = () => {
             totalPerMinute={
               data.productExpenses.BUSINESS_COST_MATERIAL?.totalPerMinute
             }
-            refetch={refetch}
           />
 
           <BusinessExpensesProductsTable
@@ -67,7 +64,6 @@ export const BusinessExpensesPage = () => {
             totalPerMinute={
               data.productExpenses.BUSINESS_COST_STORAGE?.totalPerMinute
             }
-            refetch={refetch}
           />
         </>
       )}

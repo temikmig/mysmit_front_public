@@ -20,7 +20,6 @@ import { ChecklistStatusTag } from "../ChecklistStatusTag";
 
 interface ChecklistCardProps {
   checklistId: string;
-  refetch?: () => void;
 }
 
 export const ChecklistCard = ({ checklistId }: ChecklistCardProps) => {

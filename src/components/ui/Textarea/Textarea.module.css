@@ -27,7 +27,7 @@
   background: var(--background-white);
   transition: border 0.2s ease, box-shadow 0.2s ease;
   overflow: hidden;
-  min-height: 72px;
+  min-height: 72px; /* можно подогнать под стиль проекта */
 }
 
 .wrapper:hover {
@@ -80,11 +80,13 @@
   margin-top: 2px;
 }
 
+/* Helper */
 .helperText {
   color: var(--text-gray);
   margin-top: 2px;
 }
 
+/* Disabled */
 .disabled {
   pointer-events: none;
   opacity: 0.6;

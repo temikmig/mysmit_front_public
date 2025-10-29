@@ -1,20 +1,30 @@
-.MATERIAL {
+.MATERIAL,
+.WRAPPING_MATERIAL,
+.TINING_MATERIAL {
   background: var(--global-product-type-material);
 }
 
-.CONSUMABLE {
+.CONSUMABLE,
+.WRAPPING_CONSUMABLE,
+.TINING_CONSUMABLE {
   background: var(--global-product-type-consumable);
 }
 
-.TOOL {
+.TOOL,
+.WRAPPING_TOOL,
+.TINING_TOOL {
   background: var(--global-product-type-tool);
 }
 
-.EQUIPMENT {
+.EQUIPMENT,
+.WRAPPING_EQUIPMENT,
+.TINING_EQUIPMENT {
   background: var(--global-product-type-equipment);
 }
 
-.CHEMICAL {
+.CHEMICAL,
+.WRAPPING_CHEMICAL,
+.TINING_CHEMICAL {
   background: var(--global-product-type-chemical);
 }
 

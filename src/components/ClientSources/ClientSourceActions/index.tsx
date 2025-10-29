@@ -6,12 +6,10 @@ import { useHandlers } from "../../../common/hooks";
 
 interface ClientSourcesActionsProps {
   clientSource: ClientSource;
-  refetch: () => void;
 }
 
 export const ClientSourcesActions = ({
   clientSource,
-  refetch,
 }: ClientSourcesActionsProps) => {
   const {
     handleClientSourceEdit,
@@ -32,14 +30,14 @@ export const ClientSourcesActions = ({
         tooltip="Редактировать"
         icon={<EditIcon />}
         onClick={() => {
-          handleClientSourceEdit(clientSource.id, refetch);
+          handleClientSourceEdit(clientSource.id);
         }}
       />
       <TableAction
         tooltip="Удалить"
         icon={<DeleteIcon />}
         onClick={() => {
-          handleClientSourceDelete(clientSource.id, refetch);
+          handleClientSourceDelete(clientSource.id);
         }}
       />
     </TableActionsCont>

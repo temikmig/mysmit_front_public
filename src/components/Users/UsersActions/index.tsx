@@ -12,10 +12,9 @@ import { useHandlers } from "../../../common/hooks";
 
 interface UsersActionsProps {
   user: User;
-  refetch: () => void;
 }
 
-export const UsersActions = ({ user, refetch }: UsersActionsProps) => {
+export const UsersActions = ({ user }: UsersActionsProps) => {
   const { user: userMe } = useAuth();
 
   useDeleteUserMutation();
@@ -40,7 +39,7 @@ export const UsersActions = ({ user, refetch }: UsersActionsProps) => {
         tooltip={userMe?.id !== user.id ? "Редактировать" : undefined}
         icon={<EditIcon />}
         onClick={() => {
-          handleUserEdit(user.id, refetch);
+          handleUserEdit(user.id);
         }}
       />
       <TableAction
@@ -54,7 +53,7 @@ export const UsersActions = ({ user, refetch }: UsersActionsProps) => {
         tooltip={userMe?.id !== user.id ? "Удалить" : undefined}
         icon={<DeleteIcon />}
         onClick={() => {
-          handleUserDelete(user.id, refetch);
+          handleUserDelete(user.id);
         }}
       />
     </TableActionsCont>

@@ -248,25 +248,13 @@ export const ChecklistAdd = ({ onSuccess }: ChecklistAddProps) => {
   const calculateTotals = (currentItems: Partial<ChecklistItem>[]) => {
     const materialTypes = [
       ProductTypeEnum.MATERIAL,
-      ProductTypeEnum.WRAPPING_MATERIAL,
-      ProductTypeEnum.TINING_MATERIAL,
 
       ProductTypeEnum.CONSUMABLE,
-      ProductTypeEnum.WRAPPING_CONSUMABLE,
-      ProductTypeEnum.TINING_CONSUMABLE,
-
-      ProductTypeEnum.CHEMICAL,
-      ProductTypeEnum.WRAPPING_CHEMICAL,
-      ProductTypeEnum.TINING_CHEMICAL,
     ] as ProductType[];
     const toolTypes = [
       ProductTypeEnum.TOOL,
-      ProductTypeEnum.WRAPPING_TOOL,
-      ProductTypeEnum.TINING_TOOL,
 
       ProductTypeEnum.EQUIPMENT,
-      ProductTypeEnum.WRAPPING_EQUIPMENT,
-      ProductTypeEnum.TINING_EQUIPMENT,
     ] as ProductType[];
 
     let directSum = 0;

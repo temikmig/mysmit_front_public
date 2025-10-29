@@ -27,10 +27,10 @@ export const ClientSelector = ({
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 300);
 
-  const { data: clients } = useGetClientsSearchQuery(
-    { search: debouncedSearch, limit: 5 },
-    { refetchOnMountOrArgChange: true }
-  );
+  const { data: clients } = useGetClientsSearchQuery({
+    search: debouncedSearch,
+    limit: 5,
+  });
 
   const [fetchClient, { data: fetchedClient }] = useLazyGetClientQuery();
 

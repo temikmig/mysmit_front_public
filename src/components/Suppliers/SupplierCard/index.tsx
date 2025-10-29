@@ -12,11 +12,7 @@ interface SupplierCardProps {
 }
 
 export const SupplierCard = ({ supplierId }: SupplierCardProps) => {
-  const {
-    data: supplier,
-    isLoading,
-    refetch,
-  } = useGetSupplierQuery(supplierId);
+  const { data: supplier, isLoading } = useGetSupplierQuery(supplierId);
 
   const { handleSupplierEdit } = useHandlers();
 
@@ -44,7 +40,7 @@ export const SupplierCard = ({ supplierId }: SupplierCardProps) => {
           <Button
             icon={<EditIcon />}
             onClick={() => {
-              handleSupplierEdit(supplierId, refetch);
+              handleSupplierEdit(supplierId);
             }}
           >
             Редактировать поставщика

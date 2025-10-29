@@ -42,6 +42,7 @@ type TableProps<T extends object> = {
   onSearchChange?: (value: string) => void;
   onSortChange?: (column: keyof T, order: "asc" | "desc") => void;
   rightContainer?: ReactNode;
+  preTableCont?: ReactNode;
   pagination?: boolean;
   search?: boolean;
 };
@@ -62,6 +63,7 @@ export function Table<T extends object>({
   onSearchChange,
   onSortChange,
   rightContainer,
+  preTableCont,
   pagination = true,
   search = true,
   summaryRow,
@@ -104,6 +106,7 @@ export function Table<T extends object>({
     }
   };
 
+  // получаем все "листья" колонок (без детей)
   const leafColumns = columns.flatMap((col) =>
     col.children ? col.children : col
   ) as Column<T>[];
@@ -126,6 +129,9 @@ export function Table<T extends object>({
             </div>
             {rightContainer}
           </div>
+        )}
+        {preTableCont && (
+          <div className={styles.preTableCont}>{preTableCont}</div>
         )}
         <div className={styles.tableWrapper}>
           <table

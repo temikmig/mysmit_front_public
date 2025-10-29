@@ -13,59 +13,148 @@ export interface ApiError {
   };
 }
 
-const baseQuery = fetchBaseQuery({
+let currentToken: string | null = null;
+export const updateAuthToken = (token: string) => {
+  currentToken = token;
+};
+
+const baseQueryWithAuth = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API_BASE_URL,
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.accessToken;
-    if (token) headers.set("Authorization", `Bearer ${token}`);
+    if (token) {
+      headers.set("Authorization", `Bearer ${token}`);
+    }
+
+    if (currentToken) {
+      headers.set("Authorization", `Bearer ${currentToken}`);
+    }
+
     return headers;
   },
 });
+
+const rawBaseQuery = fetchBaseQuery({
+  baseUrl: import.meta.env.VITE_API_BASE_URL,
+  credentials: "include",
+});
+
+let isRefreshing = false;
+const failedQueue: Array<{
+  resolve: (value: string) => void;
+  reject: (reason?: unknown) => void;
+}> = [];
+
+const processQueue = (error: unknown, token: string | null = null) => {
+  failedQueue.forEach((prom) => {
+    if (error) {
+      prom.reject(error);
+    } else {
+      prom.resolve(token!);
+    }
+  });
+  failedQueue.length = 0;
+};
+
+const normalizeError = (error: FetchBaseQueryError): ApiError => {
+  let message = "Неизвестная ошибка";
+  if (error.data && typeof error.data === "object") {
+    if ("msg" in error.data && typeof error.data.msg === "string") {
+      message = error.data.msg;
+    } else if (
+      "message" in error.data &&
+      typeof error.data.message === "string"
+    ) {
+      message = error.data.message;
+    }
+  }
+  return {
+    status: error.status as number,
+    data: { msg: message },
+  };
+};
 
 export const baseQueryWithReauth: BaseQueryFn<
   string | FetchArgs,
   unknown,
   ApiError
 > = async (args, api, extraOptions) => {
-  let result = await baseQuery(args, api, extraOptions);
+  const result = await baseQueryWithAuth(args, api, extraOptions);
 
-  // 401 → рефреш токена
-  if (result.error?.status === 401) {
-    const refreshResult = await baseQuery("/auth/refresh", api, extraOptions);
-    if (refreshResult.data) {
-      api.dispatch({
-        type: "auth/setAccessToken",
-        payload: (refreshResult.data as { accessToken: string }).accessToken,
-      });
-      result = await baseQuery(args, api, extraOptions);
-    } else {
-      api.dispatch({ type: "auth/logout" });
-    }
-  }
+  if ((result.error as FetchBaseQueryError)?.status === 401) {
+    if (isRefreshing) {
+      try {
+        const token = await new Promise<string>((resolve, reject) => {
+          failedQueue.push({ resolve, reject });
+        });
 
-  // нормализация ошибки
-  if (result.error) {
-    const original = result.error as FetchBaseQueryError;
-    let message = "Неизвестная ошибка";
+        const request = typeof args === "string" ? { url: args } : args;
+        const retryRequest: FetchArgs = {
+          ...request,
+          headers: {
+            ...(request as FetchArgs).headers,
+            Authorization: `Bearer ${token}`,
+          },
+        };
 
-    if (original.data && typeof original.data === "object") {
-      if ("msg" in original.data && typeof original.data.msg === "string") {
-        message = original.data.msg;
-      } else if (
-        "message" in original.data &&
-        typeof original.data.message === "string"
-      ) {
-        message = original.data.message;
+        const retryResult = await rawBaseQuery(retryRequest, api, extraOptions);
+        if (retryResult.error) {
+          return { error: normalizeError(retryResult.error) };
+        }
+        return retryResult;
+      } catch (err) {
+        return { error: normalizeError(err as FetchBaseQueryError) };
       }
     }
 
-    return {
-      error: {
-        status: typeof original.status === "number" ? original.status : 500,
-        data: { msg: message },
-      },
-    };
+    isRefreshing = true;
+
+    try {
+      const refreshResult = await rawBaseQuery(
+        { url: "/auth/refresh", method: "POST" },
+        api,
+        extraOptions
+      );
+
+      if (refreshResult.data) {
+        const { accessToken } = refreshResult.data as { accessToken: string };
+
+        api.dispatch({ type: "auth/setAccessToken", payload: accessToken });
+        updateAuthToken(accessToken);
+
+        processQueue(null, accessToken);
+
+        const request = typeof args === "string" ? { url: args } : args;
+        const retryRequest: FetchArgs = {
+          ...request,
+          headers: {
+            ...(request as FetchArgs).headers,
+            Authorization: `Bearer ${accessToken}`,
+          },
+        };
+
+        const retryResult = await rawBaseQuery(retryRequest, api, extraOptions);
+        if (retryResult.error) {
+          return { error: normalizeError(retryResult.error) };
+        }
+        return retryResult;
+      } else {
+        processQueue(refreshResult.error, null);
+        api.dispatch({ type: "auth/logout" });
+        return { error: normalizeError(refreshResult.error!) };
+      }
+    } catch (err) {
+      processQueue(err, null);
+      api.dispatch({ type: "auth/logout" });
+      return { error: normalizeError(err as FetchBaseQueryError) };
+    } finally {
+      isRefreshing = false;
+    }
+  }
+
+  if (result.error) {
+    return { error: normalizeError(result.error as FetchBaseQueryError) };
   }
 
   return result;

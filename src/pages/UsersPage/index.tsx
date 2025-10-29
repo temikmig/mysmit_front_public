@@ -15,11 +15,7 @@ import { ClickLink } from "../../components/ui/ClickLink";
 
 import styles from "./UsersPage.module.css";
 
-interface RightTableContProps {
-  refetch: () => void;
-}
-
-const RightTableCont = ({ refetch }: RightTableContProps) => {
+const RightTableCont = () => {
   const [isActionsOpen, setIsActionsOpen] = useState(false);
 
   const { handleUserAdd } = useHandlers();
@@ -32,7 +28,6 @@ const RightTableCont = ({ refetch }: RightTableContProps) => {
       color: "blue",
       onClick: () => {
         handleUserAdd();
-        refetch();
       },
     },
   ];
@@ -72,7 +67,7 @@ export const UsersPage = () => {
     undefined
   );
 
-  const { data, isLoading, refetch } = useGetUsersQuery({
+  const { data, isLoading } = useGetUsersQuery({
     page,
     limit,
     search,
@@ -115,7 +110,7 @@ export const UsersPage = () => {
     {
       key: "actions",
       sort: false,
-      render: (_, user) => <UsersActions user={user} refetch={refetch} />,
+      render: (_, user) => <UsersActions user={user} />,
       width: 64,
     },
   ];
@@ -156,7 +151,7 @@ export const UsersPage = () => {
       sortColumn={sortColumn}
       sortOrder={sortOrder}
       onSortChange={handleSortChange}
-      rightContainer={<RightTableCont refetch={refetch} />}
+      rightContainer={<RightTableCont />}
     />
   );
 };

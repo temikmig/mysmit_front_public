@@ -1,15 +1,11 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryWithReauth } from "./baseQuery";
+import { baseApi } from "./baseApi";
 import { Employee } from "../common/types";
 
-export const employeesApi = createApi({
-  reducerPath: "employeesApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["Employee"],
+export const employeesApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getEmployee: builder.query<Employee, string>({
       query: (id) => `/employees/${id}`,
-      providesTags: ["Employee"],
+      providesTags: ["Global"],
     }),
     getEmployeesList: builder.query<
       { employees: Employee[]; total: number },
@@ -30,6 +26,7 @@ export const employeesApi = createApi({
         if (sortOrder) params.append("sortOrder", sortOrder);
         return `/employees/list?${params.toString()}`;
       },
+      providesTags: ["Global"],
     }),
     getEmployeesSearch: builder.query<
       Employee[],
@@ -41,13 +38,14 @@ export const employeesApi = createApi({
         if (limit) params.append("limit", String(limit));
         return `/employees/search?${params.toString()}`;
       },
+      providesTags: ["Global"],
     }),
     addEmployee: builder.mutation<
       Employee,
       { firstName: string; lastName: string }
     >({
       query: (body) => ({ url: "/employees/add", method: "POST", body }),
-      invalidatesTags: ["Employee"],
+      invalidatesTags: ["Global"],
     }),
     editEmployee: builder.mutation<
       Employee,
@@ -58,14 +56,14 @@ export const employeesApi = createApi({
         method: "PUT",
         body: data,
       }),
-      invalidatesTags: ["Employee"],
+      invalidatesTags: ["Global"],
     }),
     deleteEmployee: builder.mutation<{ success: boolean }, string>({
       query: (id) => ({
         url: `/employees/delete/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Employee"],
+      invalidatesTags: ["Global"],
     }),
     transferEmployeeSalaryReserve: builder.mutation<
       { success: boolean; message: string },
@@ -82,7 +80,7 @@ export const employeesApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Employee"],
+      invalidatesTags: ["Global"],
     }),
     transferEmployeeSalary: builder.mutation<
       { success: boolean; message: string },
@@ -97,7 +95,7 @@ export const employeesApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Employee"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });

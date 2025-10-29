@@ -6,13 +6,9 @@ import { useHandlers } from "../../../common/hooks";
 
 interface InventoryActionsProps {
   inventory: Inventory;
-  refetch: () => void;
 }
 
-export const InventoryActions = ({
-  inventory,
-  refetch,
-}: InventoryActionsProps) => {
+export const InventoryActions = ({ inventory }: InventoryActionsProps) => {
   const { handleInventoryCard } = useHandlers();
 
   return (
@@ -21,7 +17,7 @@ export const InventoryActions = ({
         tooltip="Карточка"
         icon={<BadgeIcon />}
         onClick={() => {
-          handleInventoryCard(inventory.id, refetch);
+          handleInventoryCard(inventory.id);
         }}
       />
     </TableActionsCont>

@@ -13,7 +13,6 @@ import styles from "./ProductBatches.module.css";
 
 interface ProductBatchesProps {
   productId: number;
-  refetch?: () => void;
 }
 
 export const ProductBatches = ({ productId }: ProductBatchesProps) => {

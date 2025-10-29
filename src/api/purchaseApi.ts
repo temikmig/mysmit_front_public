@@ -1,15 +1,11 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryWithReauth } from "./baseQuery";
+import { baseApi } from "./baseApi";
 import type { PurchaseInvoice, PurchaseInvoiceInput } from "../common/types";
 
-export const purchaseApi = createApi({
-  reducerPath: "purchaseApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["PurchaseInvoice", "Supplier", "Product"],
+export const purchaseApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getPurchaseInvoice: builder.query<PurchaseInvoice, string>({
       query: (id) => `/purchase-invoice/${id}`,
-      providesTags: ["PurchaseInvoice"],
+      providesTags: ["Global"],
     }),
     getPurchaseInvoicesList: builder.query<
       { invoices: PurchaseInvoice[]; total: number },
@@ -30,6 +26,7 @@ export const purchaseApi = createApi({
         if (sortOrder) params.append("sortOrder", sortOrder);
         return `/purchase-invoice/list?${params.toString()}`;
       },
+      providesTags: ["Global"],
     }),
     createPurchaseInvoice: builder.mutation<
       PurchaseInvoice,
@@ -40,7 +37,7 @@ export const purchaseApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["PurchaseInvoice", "Product", "Supplier"],
+      invalidatesTags: ["Global"],
     }),
     cancelPurchaseInvoice: builder.mutation<
       void,
@@ -51,7 +48,7 @@ export const purchaseApi = createApi({
         method: "PATCH",
         body: data,
       }),
-      invalidatesTags: ["PurchaseInvoice", "Product", "Supplier"],
+      invalidatesTags: ["Global"],
     }),
     invalidPurchaseInvoice: builder.mutation<
       void,
@@ -62,7 +59,7 @@ export const purchaseApi = createApi({
         method: "PATCH",
         body: data,
       }),
-      invalidatesTags: ["PurchaseInvoice", "Product", "Supplier"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });

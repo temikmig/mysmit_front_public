@@ -1,22 +1,18 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryWithReauth } from "./baseQuery";
+import { baseApi } from "./baseApi";
 import type { ProductsByService, Service, ServiceInput } from "../common/types";
 
-export const servicesApi = createApi({
-  reducerPath: "servicesApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["Service", "Product"],
+export const servicesApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getService: builder.query<Service, number>({
       query: (id) => `/services/${id}`,
-      providesTags: ["Service"],
+      providesTags: ["Global"],
     }),
     getProductsByService: builder.query<
       ProductsByService,
       { serviceId: number }
     >({
       query: ({ serviceId }) => `/services/${serviceId}/products-available`,
-      providesTags: ["Service", "Product"],
+      providesTags: ["Global"],
     }),
     getServicesList: builder.query<
       { services: Service[]; total: number },
@@ -37,6 +33,7 @@ export const servicesApi = createApi({
         if (sortOrder) params.append("sortOrder", sortOrder);
         return `/services/list?${params.toString()}`;
       },
+      providesTags: ["Global"],
     }),
     getServicesSearch: builder.query<
       Service[],
@@ -48,11 +45,11 @@ export const servicesApi = createApi({
         if (limit) params.append("limit", String(limit));
         return `/services/search?${params.toString()}`;
       },
-      providesTags: ["Service"],
+      providesTags: ["Global"],
     }),
     addService: builder.mutation<Service, ServiceInput>({
       query: (body) => ({ url: "/services/add", method: "POST", body }),
-      invalidatesTags: ["Service"],
+      invalidatesTags: ["Global"],
     }),
     editService: builder.mutation<
       Service,
@@ -63,14 +60,14 @@ export const servicesApi = createApi({
         method: "PATCH",
         body: data,
       }),
-      invalidatesTags: ["Service"],
+      invalidatesTags: ["Global"],
     }),
     deleteService: builder.mutation<{ success: boolean }, number>({
       query: (id) => ({
         url: `/services/delete/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Service"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });

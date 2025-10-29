@@ -11,13 +11,9 @@ import { useHandlers } from "../../../common/hooks";
 
 interface ServicesActionsProps {
   employee: Employee;
-  refetch: () => void;
 }
 
-export const EmployeesActions = ({
-  employee,
-  refetch,
-}: ServicesActionsProps) => {
+export const EmployeesActions = ({ employee }: ServicesActionsProps) => {
   const {
     handleEmployeeEdit,
     handleEmployeeCard,
@@ -39,21 +35,21 @@ export const EmployeesActions = ({
         tooltip="Начислить зарплату"
         icon={<CoinsIcon />}
         onClick={() => {
-          handleEmployeeTransferSalary(employee.id, refetch);
+          handleEmployeeTransferSalary(employee.id);
         }}
       />
       <TableAction
         tooltip="Редактировать"
         icon={<EditIcon />}
         onClick={() => {
-          handleEmployeeEdit(employee.id, refetch);
+          handleEmployeeEdit(employee.id);
         }}
       />
       <TableAction
         tooltip="Удалить"
         icon={<DeleteIcon />}
         onClick={() => {
-          handleEmployeeDelete(employee.id, refetch);
+          handleEmployeeDelete(employee.id);
         }}
       />
     </TableActionsCont>

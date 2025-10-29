@@ -11,14 +11,12 @@ import { ClickLink } from "../../ui/ClickLink";
 
 interface BusinessExpensesManualTableProps {
   items: ManualExpenseItem[];
-  refetch: () => void;
   total: number;
   totalPerMinute: number;
 }
 
 export const BusinessExpensesManualTable = ({
   items,
-  refetch,
   total,
   totalPerMinute,
 }: BusinessExpensesManualTableProps) => {
@@ -65,9 +63,7 @@ export const BusinessExpensesManualTable = ({
     {
       key: "actions",
       width: 96,
-      render: (_, b) => (
-        <BusinessExpensesActions businessExpense={b} refetch={refetch} />
-      ),
+      render: (_, b) => <BusinessExpensesActions businessExpense={b} />,
     },
   ];
 

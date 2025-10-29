@@ -1,15 +1,11 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryWithReauth } from "./baseQuery";
+import { baseApi } from "./baseApi";
 import type { Client, Car, CarInput, ClientInput } from "../common/types";
 
-export const clientsApi = createApi({
-  reducerPath: "clientsApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["Client", "Car"],
+export const clientsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getClient: builder.query<Client, string>({
       query: (id) => `/clients/${id}`,
-      providesTags: ["Client"],
+      providesTags: ["Global"],
     }),
     getClientsList: builder.query<
       { clients: Client[]; total: number },
@@ -30,7 +26,7 @@ export const clientsApi = createApi({
         if (sortOrder) params.append("sortOrder", sortOrder);
         return `/clients/list?${params.toString()}`;
       },
-      providesTags: ["Client"],
+      providesTags: ["Global"],
     }),
     getClientsSearch: builder.query<
       Client[],
@@ -42,11 +38,11 @@ export const clientsApi = createApi({
         if (limit) params.append("limit", String(limit));
         return `/clients/search?${params.toString()}`;
       },
-      providesTags: ["Client"],
+      providesTags: ["Global"],
     }),
     addClient: builder.mutation<Client, ClientInput>({
       query: (body) => ({ url: "/clients/add", method: "POST", body }),
-      invalidatesTags: ["Client"],
+      invalidatesTags: ["Global"],
     }),
     editClient: builder.mutation<Client, { id: string; data: Partial<Client> }>(
       {
@@ -55,7 +51,7 @@ export const clientsApi = createApi({
           method: "PUT",
           body: data,
         }),
-        invalidatesTags: ["Client"],
+        invalidatesTags: ["Global"],
       }
     ),
     deleteClient: builder.mutation<{ success: boolean }, string>({
@@ -63,7 +59,7 @@ export const clientsApi = createApi({
         url: `/clients/delete/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Client"],
+      invalidatesTags: ["Global"],
     }),
     transferClientLoyaltyBalaceReserve: builder.mutation<
       { success: boolean; message: string },
@@ -80,7 +76,7 @@ export const clientsApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Client"],
+      invalidatesTags: ["Global"],
     }),
     getClientCarsSearch: builder.query<
       Car[],
@@ -92,10 +88,11 @@ export const clientsApi = createApi({
         if (limit) params.append("limit", String(limit));
         return `/clients/${clientId}/cars/search?${params.toString()}`;
       },
+      providesTags: ["Global"],
     }),
     getClientCar: builder.query<Car, string>({
       query: (id) => `/clients/cars/${id}`,
-      providesTags: ["Car"],
+      providesTags: ["Global"],
     }),
     addClientCar: builder.mutation<Car, CarInput>({
       query: ({ clientId, ...body }) => ({
@@ -103,7 +100,7 @@ export const clientsApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Client", "Car"],
+      invalidatesTags: ["Global"],
     }),
     editClientCar: builder.mutation<Car, { id: string; data: Partial<Car> }>({
       query: ({ id, data }) => ({
@@ -111,14 +108,14 @@ export const clientsApi = createApi({
         method: "PUT",
         body: data,
       }),
-      invalidatesTags: ["Car"],
+      invalidatesTags: ["Global"],
     }),
     deleteClientCar: builder.mutation<{ success: boolean }, string>({
       query: (id) => ({
         url: `/clients/cars/delete/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Client"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });

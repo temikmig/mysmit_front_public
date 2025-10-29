@@ -22,3 +22,21 @@
 .filterLabel {
   color: var(--text-gray);
 }
+
+.productsFundCont {
+  padding: 0px 16px 16px 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.productsFundName {
+}
+
+.productsFundBalance {
+}
+
+.productsFunTotalReserves {
+}
+
+.productsFundDiff {
+}

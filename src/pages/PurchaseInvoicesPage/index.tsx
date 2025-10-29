@@ -17,11 +17,7 @@ import {
   PurchaseInvoiceStatusTag,
 } from "../../components/PurchaseInvoices";
 
-interface RightTableContProps {
-  refetch: () => void;
-}
-
-const RightTableCont = ({ refetch }: RightTableContProps) => {
+const RightTableCont = () => {
   const [isActionsOpen, setIsActionsOpen] = useState(false);
 
   const { handlePurchaseInvoiceAdd } = useHandlers();
@@ -33,7 +29,7 @@ const RightTableCont = ({ refetch }: RightTableContProps) => {
       label: "Оформить накладную",
       color: "blue",
       onClick: () => {
-        handlePurchaseInvoiceAdd(undefined, refetch);
+        handlePurchaseInvoiceAdd();
       },
     },
   ];
@@ -73,7 +69,7 @@ export const PurchaseInvoicesPage = () => {
     "desc"
   );
 
-  const { data, isLoading, refetch } = useGetPurchaseInvoicesListQuery({
+  const { data, isLoading } = useGetPurchaseInvoicesListQuery({
     page,
     limit,
     search,
@@ -136,9 +132,7 @@ export const PurchaseInvoicesPage = () => {
     {
       key: "actions",
       sort: false,
-      render: (_, p) => (
-        <PurchaseInvoicesActions purchaseInvoice={p} refetch={refetch} />
-      ),
+      render: (_, p) => <PurchaseInvoicesActions purchaseInvoice={p} />,
       width: 48,
     },
   ];
@@ -174,7 +168,7 @@ export const PurchaseInvoicesPage = () => {
       sortColumn={sortColumn}
       sortOrder={sortOrder}
       onSortChange={handleSortChange}
-      rightContainer={<RightTableCont refetch={refetch} />}
+      rightContainer={<RightTableCont />}
     />
   );
 };

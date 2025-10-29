@@ -1,11 +1,7 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
+import { baseApi } from "./baseApi";
 import type { StockMovement } from "../common/types";
-import { baseQueryWithReauth } from "./baseQuery";
 
-export const stockMovementsApi = createApi({
-  reducerPath: "stockMovementsApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["StockMovement"],
+export const stockMovementsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getStockMovements: builder.query<
       { stockMovements: StockMovement[]; total: number },
@@ -26,7 +22,7 @@ export const stockMovementsApi = createApi({
         if (sortOrder) params.append("sortOrder", sortOrder);
         return `/stock-movements/list?${params.toString()}`;
       },
-      providesTags: ["StockMovement"],
+      providesTags: ["Global"],
     }),
   }),
 });

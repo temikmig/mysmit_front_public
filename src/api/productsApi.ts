@@ -1,4 +1,4 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
+import { baseApi } from "./baseApi";
 import type {
   Product,
   ProductAddForm,
@@ -8,12 +8,8 @@ import type {
   ProductWriteOffForm,
   WriteoffPriceHistory,
 } from "../common/types";
-import { baseQueryWithReauth } from "./baseQuery";
 
-export const productsApi = createApi({
-  reducerPath: "productsApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["Product"],
+export const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProductsList: builder.query<
       { products: Product[]; total: number },
@@ -25,6 +21,7 @@ export const productsApi = createApi({
         sortOrder?: "asc" | "desc";
         visibility?: "active" | "hidden" | "all";
         stock?: "positive" | "empty" | "all";
+        productType?: "ALL" | ProductType;
       }
     >({
       query: ({
@@ -35,6 +32,7 @@ export const productsApi = createApi({
         sortOrder,
         visibility,
         stock,
+        productType,
       }) => {
         const params = new URLSearchParams();
         params.append("page", String(page));
@@ -44,9 +42,10 @@ export const productsApi = createApi({
         if (sortOrder) params.append("sortOrder", sortOrder);
         if (visibility) params.append("visibility", visibility);
         if (stock) params.append("stock", stock);
+        if (productType) params.append("productType", productType);
         return `/products/list?${params.toString()}`;
       },
-      providesTags: ["Product"],
+      providesTags: ["Global"],
     }),
     getProductsSearch: builder.query<
       Product[],
@@ -58,15 +57,15 @@ export const productsApi = createApi({
         if (limit) params.append("limit", String(limit));
         return `/products/search?${params.toString()}`;
       },
-      providesTags: ["Product"],
+      providesTags: ["Global"],
     }),
     getProductsByType: builder.query<Product[], ProductType>({
       query: (type) => `/products?type=${type}`,
-      providesTags: ["Product"],
+      providesTags: ["Global"],
     }),
     getProduct: builder.query<Product, number>({
       query: (id) => `/products/${id}`,
-      providesTags: ["Product"],
+      providesTags: ["Global"],
     }),
     getProductBatches: builder.query<
       { batches: ProductBatch[]; total: number },
@@ -87,11 +86,11 @@ export const productsApi = createApi({
         if (sortOrder) params.append("sortOrder", sortOrder);
         return `/products/${productId}/batches?${params.toString()}`;
       },
-      providesTags: ["Product"],
+      providesTags: ["Global"],
     }),
     addProduct: builder.mutation<Product, ProductAddForm>({
       query: (body) => ({ url: "/products/add", method: "POST", body }),
-      invalidatesTags: ["Product"],
+      invalidatesTags: ["Global"],
     }),
     editProduct: builder.mutation<
       Product,
@@ -102,19 +101,19 @@ export const productsApi = createApi({
         method: "PUT",
         body: data,
       }),
-      invalidatesTags: ["Product"],
+      invalidatesTags: ["Global"],
     }),
     deleteProduct: builder.mutation<void, number>({
       query: (id) => ({ url: `/products/delete/${id}`, method: "DELETE" }),
-      invalidatesTags: ["Product"],
+      invalidatesTags: ["Global"],
     }),
     activeProduct: builder.mutation<void, number>({
       query: (id) => ({ url: `/products/to-active/${id}`, method: "PATCH" }),
-      invalidatesTags: ["Product"],
+      invalidatesTags: ["Global"],
     }),
     hideProduct: builder.mutation<void, number>({
       query: (id) => ({ url: `/products/to-hide/${id}`, method: "PATCH" }),
-      invalidatesTags: ["Product"],
+      invalidatesTags: ["Global"],
     }),
     editProductWriteOffPrice: builder.mutation<
       ProductWriteOffForm,
@@ -125,11 +124,11 @@ export const productsApi = createApi({
         method: "PUT",
         body: data,
       }),
-      invalidatesTags: ["Product"],
+      invalidatesTags: ["Global"],
     }),
     getWriteoffPriceHistory: builder.query<WriteoffPriceHistory, number>({
       query: (id) => `/products/${id}/writeoff-price-history/`,
-      providesTags: ["Product"],
+      providesTags: ["Global"],
     }),
     transferProductsReserve: builder.mutation<
       { success: boolean; message: string },
@@ -145,7 +144,7 @@ export const productsApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Product"],
+      invalidatesTags: ["Global"],
     }),
   }),
 });

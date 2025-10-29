@@ -17,11 +17,7 @@ import { formatDateToText } from "../../common/functions";
 import { useAuth, useHandlers } from "../../common/hooks";
 import { ClickLink } from "../../components/ui/ClickLink";
 
-interface RightTableContProps {
-  refetch: () => void;
-}
-
-const RightTableCont = ({ refetch }: RightTableContProps) => {
+const RightTableCont = () => {
   const [isActionsOpen, setIsActionsOpen] = useState(false);
 
   const { isAdmin } = useAuth();
@@ -35,7 +31,7 @@ const RightTableCont = ({ refetch }: RightTableContProps) => {
       label: "Создать чек-лист",
       color: "blue",
       onClick: () => {
-        if (isAdmin) handleChecklistAdd(refetch);
+        if (isAdmin) handleChecklistAdd();
       },
     },
   ];
@@ -75,7 +71,7 @@ export const ChecklistsPage = () => {
     undefined
   );
 
-  const { data, isLoading, refetch } = useGetChecklistsListQuery({
+  const { data, isLoading } = useGetChecklistsListQuery({
     page,
     limit,
     search,
@@ -149,7 +145,7 @@ export const ChecklistsPage = () => {
     {
       key: "actions",
       sort: false,
-      render: (_, c) => <ChecklistActions checklist={c} refetch={refetch} />,
+      render: (_, c) => <ChecklistActions checklist={c} />,
       width: 64,
     },
   ];
@@ -185,7 +181,7 @@ export const ChecklistsPage = () => {
       sortColumn={sortColumn}
       sortOrder={sortOrder}
       onSortChange={handleSortChange}
-      rightContainer={<RightTableCont refetch={refetch} />}
+      rightContainer={<RightTableCont />}
     />
   );
 };

@@ -81,6 +81,7 @@ export const FundSelector = ({
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      {/* Родитель */}
       <AutocompleteInput
         label={label}
         placeholder="Выберите фонд"

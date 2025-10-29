@@ -15,3 +15,4 @@ export * from "./inventory";
 export * from "./clientSources";
 export * from "./businessPercentages";
 export * from "./plans";
+export * from "./writeOff";

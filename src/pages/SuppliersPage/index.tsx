@@ -14,11 +14,7 @@ import type { Supplier } from "../../common/types";
 import { useHandlers } from "../../common/hooks";
 import { ClickLink } from "../../components/ui/ClickLink";
 
-interface RightTableContProps {
-  refetch: () => void;
-}
-
-const RightTableCont = ({ refetch }: RightTableContProps) => {
+const RightTableCont = () => {
   const [isActionsOpen, setIsActionsOpen] = useState(false);
 
   const { handleSupplierAdd } = useHandlers();
@@ -30,7 +26,7 @@ const RightTableCont = ({ refetch }: RightTableContProps) => {
       label: "Добавить поставщика",
       color: "blue",
       onClick: () => {
-        handleSupplierAdd(refetch);
+        handleSupplierAdd();
       },
     },
   ];
@@ -70,7 +66,7 @@ export const SuppliersPage = () => {
     undefined
   );
 
-  const { data, isLoading, refetch } = useGetSuppliersListQuery({
+  const { data, isLoading } = useGetSuppliersListQuery({
     page,
     limit,
     search,
@@ -110,7 +106,7 @@ export const SuppliersPage = () => {
     {
       key: "actions",
       sort: false,
-      render: (_, s) => <SuppliersActions supplier={s} refetch={refetch} />,
+      render: (_, s) => <SuppliersActions supplier={s} />,
       width: 96,
     },
   ];
@@ -146,7 +142,7 @@ export const SuppliersPage = () => {
       sortColumn={sortColumn}
       sortOrder={sortOrder}
       onSortChange={handleSortChange}
-      rightContainer={<RightTableCont refetch={refetch} />}
+      rightContainer={<RightTableCont />}
     />
   );
 };
