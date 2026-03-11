@@ -1,16 +1,21 @@
-import { RouterProvider } from "react-router-dom";
-import { router } from "./routing";
+import { SnackbarProvider } from "notistack";
 import { Provider } from "react-redux";
-import { store } from "./store";
-import { DevelopTag } from "./components/DevelopTag";
+import { RouterProvider } from "react-router-dom";
 
-function App() {
+import { ThemeProvider } from "@app/providers";
+import { router } from "@app/router";
+import { store } from "@app/store";
+
+import "./index.css";
+
+export const App = () => {
   return (
     <Provider store={store}>
-      <DevelopTag />
-      <RouterProvider router={router} />
+      <ThemeProvider>
+        <SnackbarProvider>
+          <RouterProvider router={router}></RouterProvider>
+        </SnackbarProvider>
+      </ThemeProvider>
     </Provider>
   );
-}
-
-export default App;
+};

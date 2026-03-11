@@ -1,0 +1,9 @@
+.showGradient {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.hideGradient {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}

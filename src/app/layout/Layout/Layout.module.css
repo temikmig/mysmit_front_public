@@ -1,0 +1,14 @@
+.layoutBox {
+  margin-top: 58px;
+  height: calc(100% - 58px);
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
