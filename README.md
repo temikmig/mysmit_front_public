@@ -23,14 +23,6 @@
 - интерфейсы финансового учета **не демонстрируются**
 - персональные данные сотрудников и клиентов **скрыты**
 
----
-
-## Как работает workflow
-
-<p align="center">
-  <img src="./screenshots/demo-workflow.gif" width="600" alt="Workflow Demo"/>
-</p>
-
 Система построена вокруг **workflow согласования**:
 
 1. Сотрудник создаёт чек-лист услуги
@@ -52,9 +44,9 @@
   <img src="https://img.shields.io/badge/Styled%20Components-20232A?style=for-the-badge&logo=styledcomponents" />
   <img src="https://img.shields.io/badge/MUI-20232A?style=for-the-badge&logo=mui" />
   <img src="https://img.shields.io/badge/FSD-20232A?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Node.js-20232A?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Prisma-20232A?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/PostgreSQL-20232A?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Node.js-20232A?style=for-the-badge&logo=Node.js" />
+  <img src="https://img.shields.io/badge/Prisma-20232A?style=for-the-badge&logo=Prisma" />
+  <img src="https://img.shields.io/badge/PostgreSQL-20232A?style=for-the-badge&logo=PostgreSQL" />
 </p>
 
 ---
@@ -90,22 +82,29 @@
 
 ---
 
-## Галерея интерфейсов
+## Демонстрация
 
-### Desktop
+### Чек-листы
 
-<p align="center">
-  <img src="./screenshots/desktop-dashboard.png" width="45%" alt="Desktop Dashboard"/>
-  <img src="./screenshots/desktop-checklist.png" width="45%" alt="Desktop Checklist"/>
-</p>
+![Checklists](./screenshots/screen_1.png)
 
-### Mobile
+### Склад
 
-<p align="center">
-  <img src="./screenshots/mobile-tasks.png" width="30%" alt="Mobile Tasks"/>
-  <img src="./screenshots/mobile-checklist.png" width="30%" alt="Mobile Checklist"/>
-  <img src="./screenshots/mobile-profile.png" width="30%" alt="Mobile Profile"/>
-</p>
+![Storage](./screenshots/screen_2.png)
+
+### Создание чек-листа
+
+![ChecklistCreate](./screenshots/screen_3.png)
+
+### Зарплатный баланс сотрудника
+
+![EmployeeSalary](./screenshots/screen_4.png)
+
+---
+
+## Демонстрация использования системы сотрудниками
+
+![EmployeeWork](./screenshots/photo.png)
 
 ---
 
