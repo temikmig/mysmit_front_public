@@ -15,7 +15,8 @@
 - учёт товаров склада;
 - согласование задач;
 - мониториг и управление финансами.
-  **Сотрудники** используют мобильное версию для быстрого выполнения задач прямо на месте работы
+
+**Сотрудники** используют мобильное версию для быстрого выполнения задач прямо на месте работы
 
 **Согласно NDA RedLine**:
 
@@ -51,11 +52,14 @@
   <img src="https://img.shields.io/badge/Styled%20Components-20232A?style=for-the-badge&logo=styledcomponents" />
   <img src="https://img.shields.io/badge/MUI-20232A?style=for-the-badge&logo=mui" />
   <img src="https://img.shields.io/badge/FSD-20232A?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Node.js-20232A?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Prisma-20232A?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/PostgreSQL-20232A?style=for-the-badge" />
 </p>
 
 ---
 
-## Моя зона ответственности:
+## Задачи проекта:
 
 Реализация **front-end**, с использованием **React + TypeScript + Redux Toolkit + MUI + FSD**
 
@@ -64,7 +68,7 @@
 - интеграцию с API
 - адаптацию интерфейса под мобильные устройства и десктоп
 
-Реализация **back-end**
+Реализация **back-end**, с использованием **nodeJS + Prisma + PostgreSQL**
 
 - разработка серверной логики системы
 - проектирование API для взаимодействия с клиентским приложением
