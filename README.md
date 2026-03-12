@@ -104,7 +104,7 @@
 
 ## Демонстрация использования системы сотрудниками
 
-![EmployeeWork](./screenshots/photo.png)
+![EmployeeWork](./screenshots/photo.jpg)
 
 ---
 
